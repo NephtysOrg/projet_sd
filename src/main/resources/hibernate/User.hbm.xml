@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 avr. 2015 10:17:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.nephtysorg.model.pojo.User" table="user" catalog="m1" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="location" class="com.nephtysorg.model.pojo.Location" fetch="select">
+            <column name="location" not-null="true" />
+        </many-to-one>
+        <property name="login" type="string">
+            <column name="login" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" not-null="true" />
+        </property>
+        <set name="groups" table="group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true">
+                    <comment>Owner</comment>
+                </column>
+            </key>
+            <one-to-many class="com.nephtysorg.model.pojo.Group" />
+        </set>
+        <set name="userGroups" table="user_group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.nephtysorg.model.pojo.UserGroup" />
+        </set>
+    </class>
+</hibernate-mapping>
