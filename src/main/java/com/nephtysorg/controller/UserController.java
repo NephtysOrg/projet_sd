@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Manage user management request
@@ -92,7 +93,7 @@ public class UserController {
             mv = new ModelAndView("redirect:/home");
         } else {
             mv = new ModelAndView("/user/login");
-            mv.addObject("message", "login failed");
+            mv.addObject("callout", new Callout("danger", "Erreur", "Mauvaise combinaison Login/Mot de passe"));
         }
 
         return mv;
@@ -124,15 +125,16 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
-    public ModelAndView postCreate(@Valid @ModelAttribute("user") User user, BindingResult result) {
+    public ModelAndView postCreate(RedirectAttributes redirectAttr, @Valid @ModelAttribute("user") User user, BindingResult result) {
         ModelAndView mv = new ModelAndView("/user/create");
         if (result.hasErrors()) {
             return mv;
         } else if (this.userService.getUserByName(user.getLogin()) == null) {
-            mv.addObject("callout", new Callout("success", "Fellicitation", "Nous avons crée votre compte. Vous pouvez vous connecter."));
+            redirectAttr.addAttribute("callout", new Callout("success", "Fellicitation", "Nous avons crée votre compte. Vous pouvez vous connecter."));
             this.userService.addUser(user);
+            mv = new ModelAndView("redirect:/user/login");
         } else {
-            mv.addObject("message", "User already exists");
+            mv.addObject("callout", new Callout("warning", "Attention", "Ce nom d'utilisateur est déja pris."));
         }
         return mv;
     }
