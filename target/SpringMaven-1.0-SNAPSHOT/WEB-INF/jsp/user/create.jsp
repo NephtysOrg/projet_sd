@@ -1,79 +1,60 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-      
-      <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Chat ++ | Nouveau compte</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.2 -->
-    <link href="<c:url value="/theme/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-    <link href="<c:url value="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/theme/dist/css/AdminLTE.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/theme/dist/css/skins/_all-skins.min.css" />" rel="stylesheet">
+
+<html><head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Login</title>
+
     
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body class="register-page">
-    <div class="register-box">
-      <div class="register-logo">
-          <span><b>Chat</b> ++</span>
-      </div>
+            <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
+            <link href="<c:url value="/assets/ont-awesome/css/font-awesome.css"/>" rel="stylesheet">
+            <link href="<c:url value="/assets/css/animate.css"/>" rel="stylesheet">
+            <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet">
 
-      <div class="register-box-body">
-        <p class="login-box-msg">Créez un nouveau compte</p>
-        <form:form action="create"  commandName="user">
-          <div class="form-group has-feedback">
-            <form:input path="login" cssClass="form-control"  placeholder="Nom d'utilisateur" />
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <form:errors path="login" cssClass="text-red"/>
-          </div>
-          <div class="form-group has-feedback">
-            <form:password cssClass="form-control" path="password"  placeholder="Mot de passe"/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            <form:errors path="password" cssClass="text-red"/>
-          </div>
-          <div class="form-group has-feedback">
-              <form:input path="location.label" cssClass="form-control" placeholder="Localisation" />
-            <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
-            <form:errors path="location.label" cssClass="text-red"/>
-          </div>
-          
-          <div class="row">
-            <div class="col-xs-8">    
-                       
-            </div><!-- /.col -->
-            <div class="col-xs-4">
-              <button type="submit" class="btn bg-purple btn-block btn-flat">Valider</button>
-            </div><!-- /.col -->
-          </div>
-        </form:form>        
+<style type="text/css"></style></head>
 
-        <a href="login" class="text-purple text-center">Je possède déjà un compte.</a>
-      </div><!-- /.form-box -->
-    </div><!-- /.register-box -->
+<body class="gray-bg" cz-shortcut-listen="true">
 
-    <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
-  </body>
-</html>
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">C++</h1>
+
+            </div>
+            <h3>Bienvenue sur Chat++</h3>
+            <p>Creez un compte.</p>
+            <form:form action="create" commandName="user" cssClass="m-t">
+                <div class="form-group">
+                    <form:input path="login" cssClass="form-control" placeholder="Login"/>
+                    <form:errors path="login" cssClass="text-danger"/>
+                </div>
+                <div class="form-group">
+                    <form:password  path="password" cssClass="form-control" placeholder="Password"/>
+                    <form:errors path="password" cssClass="text-danger"/>
+                </div>
+                <div class="form-group">
+                    <form:input path="location.label" cssClass="form-control" placeholder="Localisation" />
+                    <form:errors path="location.label" cssClass="text-danger"/>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Valider</button>
+
+                <p class="text-muted text-center"><small>Déja un compte?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="<c:url value="/user/login"/>">Se connecter</a>
+            </form:form>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+<script src="<c:url value="/assets/js/jquery-2.1.1.js"/>"></script>
+        <script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+
+
+
+
+</body></html>

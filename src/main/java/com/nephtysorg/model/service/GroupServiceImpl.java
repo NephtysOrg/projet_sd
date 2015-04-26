@@ -85,13 +85,26 @@ public class GroupServiceImpl implements GroupService {
     @Override
     @Transactional
     public void invite(User user, Group group) {
-        UserGroup ug = new UserGroup();
-        ug.setId(new UserGroupId(user.getId(), group.getId()));
-        ug.setGroup(group);
-        ug.setUser(group.getUser());
-        ug.setInvited((byte) 1);       // false
-        ug.setSubscribed((byte) 0);    // true
-        userGroupDAO.addUserGroup(ug);
+        UserGroupId id = new UserGroupId(user.getId(), group.getId());
+        UserGroup ug = this.userGroupDAO.getUserGroupById(id);
+        
+        // Une lisaison existe deja
+        if(ug != null){
+            // Elle est de type different
+            if(ug.getSubscribed() == (byte) 1 ){
+               this.accept(user, group);
+            }
+        }else{
+            // Aucune liaison n'existe
+            ug = new UserGroup();
+            ug.setId(new UserGroupId(user.getId(), group.getId()));
+            ug.setGroup(group);
+            ug.setUser(group.getUser());
+            ug.setInvited((byte) 1);       // false
+            ug.setSubscribed((byte) 0);    // true
+            userGroupDAO.addUserGroup(ug);
+            }
+        
     }
 
 
@@ -108,13 +121,25 @@ public class GroupServiceImpl implements GroupService {
     @Override
     @Transactional
     public void subscribe(User user, Group group) {
-        UserGroup ug = new UserGroup();
-        ug.setId(new UserGroupId(user.getId(), group.getId()));
-        ug.setGroup(group);
-        ug.setUser(group.getUser());
-        ug.setInvited((byte) 0);       // false
-        ug.setSubscribed((byte) 1);    // true
-        userGroupDAO.addUserGroup(ug);
+        UserGroupId id = new UserGroupId(user.getId(), group.getId());
+        UserGroup ug = this.userGroupDAO.getUserGroupById(id);
+        
+        // Une lisaison existe deja
+        if(ug != null){
+            // Elle est de type different
+            if(ug.getInvited() == (byte) 1 ){
+               this.accept(user, group);
+            }
+        }else{
+            // Aucune liaison n'existe
+            ug = new UserGroup();
+            ug.setId(new UserGroupId(user.getId(), group.getId()));
+            ug.setGroup(group);
+            ug.setUser(group.getUser());
+            ug.setInvited((byte) 0);       // false
+            ug.setSubscribed((byte) 1);    // true
+            userGroupDAO.addUserGroup(ug);
+            }
     }
 
     @Override

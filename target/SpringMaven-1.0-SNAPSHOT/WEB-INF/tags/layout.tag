@@ -14,7 +14,8 @@
 
         <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/font-awesome/css/font-awesome.css"/>" rel="stylesheet">
-
+        <link href="<c:url value="/assets/css/plugins/chosen/chosen.css"/>" rel="stylesheet">
+        
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.bootstrap.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.responsive.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.tableTools.min.css"/>" rel="stylesheet">
@@ -91,6 +92,18 @@
                     <c:if test="${not empty callout}">
                         <div class="alert alert-${callout.getType()} alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            <c:choose>
+                                <c:when test="${callout.getType() eq \"warning\"}">
+                                    <i class="fa fa-warning"></i>
+                                </c:when>
+                                 <c:when test="${callout.getType() eq 'success'}">
+                                    <i class="fa fa-check"></i>
+                                </c:when>
+                                 <c:when test="${callout.getType() eq 'danger'}">
+                                    <i class="fa fa-ban"></i>
+                                </c:when>
+                            </c:choose>
+                             <b><c:out value="${callout.getTitle()}"/>. </b>
                             <c:out value="${callout.getContent()}"/>
                         </div>
                     </c:if>
@@ -119,6 +132,7 @@
         <script src="<c:url value="/assets/js/plugins/dataTables/dataTables.tableTools.min.js"/>"></script>
 
         <!-- Custom and plugin javascript -->
+        <script src="<c:url value="/assets/js/plugins/chosen/chosen.jquery.js"/>"></script>
         <script src="<c:url value="/assets/js/inspinia.js"/>"></script>
         <script src="<c:url value="/assets/js/plugins/pace/pace.min.js"/>"></script>
 

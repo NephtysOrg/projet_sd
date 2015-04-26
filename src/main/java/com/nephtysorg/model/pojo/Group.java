@@ -5,6 +5,7 @@ package com.nephtysorg.model.pojo;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 /**
@@ -70,6 +71,21 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
     
     public void setUserGroups(Set userGroups) {
         this.userGroups = userGroups;
+    }
+    
+    @Transient
+    public int getSubscriptionNumber() {
+        int result = 0;
+        Set<UserGroup> temp;
+        temp = new HashSet<>(this.userGroups);
+        
+        for(UserGroup tmp : temp){
+            if(tmp.getSubscribed() == (byte)1){
+                result ++;
+            }
+        }
+        temp.clear();
+        return result;
     }
 
     @Override

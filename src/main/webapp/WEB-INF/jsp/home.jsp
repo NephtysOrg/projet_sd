@@ -16,7 +16,8 @@
     </jsp:attribute>
     <jsp:body>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Vos groupes</h5>
@@ -27,6 +28,7 @@
                                 <tr>
                                     <th>Nom</th>
                                     <th>Description</th>
+                                    <th>Demandes en attente</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -38,7 +40,20 @@
                                             </td>
                                             <td>
                                             <c:out value="${group.getDescription()}"></c:out>
+                                            
                                             </td> 
+                                            <td>
+                                                <c:if test="${group.getSubscriptionNumber() > 0}">
+                                                    <span class="badge badge-info">
+                                                        <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                                    </span>
+                                                </c:if>
+                                                <c:if test="${group.getSubscriptionNumber() eq 0}">
+                                                    <span class="badge">
+                                                        <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                                    </span>
+                                                </c:if>
+                                            </td>
                                             <td>
                                                 <a href="<c:url value="/group/edit/${group.getId()}"/>" class="btn btn-warning btn-xs">
                                                 <i class="fa fa-edit"></i> Editer
@@ -56,6 +71,7 @@
                     </div>
                 </div>
             </div>
+        <div class="col-md-2"></div>
         </div>
         <div class="row">
             <div class="col-md-6">

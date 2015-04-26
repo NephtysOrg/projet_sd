@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import com.nephtysorg.model.pojo.Group;
 import com.nephtysorg.model.pojo.User;
 import com.nephtysorg.model.service.UserService;
+import com.nephtysorg.model.utils.Callout;
 import com.nephtysorg.model.utils.SessionUtil;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,7 +129,7 @@ public class UserController {
         if (result.hasErrors()) {
             return mv;
         } else if (this.userService.getUserByName(user.getLogin()) == null) {
-            mv.addObject("message", "Create success");
+            mv.addObject("callout", new Callout("success", "Fellicitation", "Nous avons crée votre compte. Vous pouvez vous connecter."));
             this.userService.addUser(user);
         } else {
             mv.addObject("message", "User already exists");

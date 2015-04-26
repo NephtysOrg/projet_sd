@@ -11,6 +11,8 @@ import com.nephtysorg.model.pojo.UserGroup;
 import com.nephtysorg.model.pojo.UserGroupId;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  *
@@ -49,7 +51,7 @@ public class UserGroupDAOImpl implements UserGroupDAO {
     @Override
     public UserGroup getUserGroupById(UserGroupId id) {
         Session session = this.sessionFactory.getCurrentSession();
-        UserGroup user = (UserGroup) session.load(UserGroup.class, id);
+        UserGroup user = (UserGroup) session.get(UserGroup.class, id);
         
         return user;
     }
