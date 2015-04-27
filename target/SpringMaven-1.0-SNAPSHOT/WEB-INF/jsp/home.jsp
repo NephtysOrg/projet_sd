@@ -16,13 +16,12 @@
     </jsp:attribute>
     <jsp:body>
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+            <div class="col-md-7">
+                <div class="panel panel-primary float-e-margins">
+                    <div class="panel-heading">
                         <h5>Vos groupes</h5>
                     </div>
-                    <div class="ibox-content">
+                    <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
                             <thead>
                                 <tr>
@@ -40,22 +39,22 @@
                                             </td>
                                             <td>
                                             <c:out value="${group.getDescription()}"></c:out>
-                                            
+
                                             </td> 
                                             <td>
-                                                <c:if test="${group.getSubscriptionNumber() > 0}">
-                                                    <span class="badge badge-info">
-                                                        <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                            <c:if test="${group.getSubscriptionNumber() > 0}">
+                                                <span class="badge badge-info">
+                                                    <c:out value="${group.getSubscriptionNumber()}"></c:out>
                                                     </span>
-                                                </c:if>
-                                                <c:if test="${group.getSubscriptionNumber() eq 0}">
-                                                    <span class="badge">
-                                                        <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                            </c:if>
+                                            <c:if test="${group.getSubscriptionNumber() eq 0}">
+                                                <span class="badge">
+                                                    <c:out value="${group.getSubscriptionNumber()}"></c:out>
                                                     </span>
-                                                </c:if>
-                                            </td>
-                                            <td>
-                                                <a href="<c:url value="/group/edit/${group.getId()}"/>" class="btn btn-warning btn-xs">
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/group/edit/${group.getId()}"/>" class="btn btn-warning btn-xs">
                                                 <i class="fa fa-edit"></i> Editer
                                             </a>
                                             <br/>
@@ -71,15 +70,54 @@
                     </div>
                 </div>
             </div>
-        <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <div class="panel panel-primary float-e-margins">
+                    <div class="panel-heading">
+                        <h5>Les groupes dont vous étes membres</h5>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="group" items="${member_groups}">
+                                    <tr>
+                                        <td>
+                                            <c:out value="${group.getName()}"></c:out>
+                                            </td>
+                                            <td>
+                                            <c:out value="${group.getDescription()}"></c:out>
+
+                                            </td> 
+                                        <td>
+                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${user.getId()}"/>" class="btn btn-danger btn-xs">
+                                                <i class="fa fa-ban"></i> Quitter
+                                            </a>
+                                            <br/>
+                                            <a href="<c:url value="/group/show/${group.getId()}"/>" class="btn btn-info btn-xs">
+                                                <i class="fa fa-eye"></i> Details
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+                <div class="panel panel-default float-e-margins">
+                    <div class="panel-heading">
                         <h5>Vos invitations</h5>
                     </div>
-                    <div class="ibox-content">
+                    <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
                             <thead>
                                 <tr>
@@ -101,6 +139,9 @@
                                                 <a href="<c:url value="/user_group/discard/${group.getId()}/${user.getId()}"/>" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-times"></i> Refuser
                                             </a>
+                                            <a href="<c:url value="/user_group/accept/${group.getId()}/${user.getId()}"/>" class="btn btn-warning btn-xs">
+                                                <i class="fa fa-check"></i> Accepter
+                                            </a>
                                             <br>
                                             <a href="<c:url value="/group/show/${group.getId()}"/>" class="btn btn-info btn-xs">
                                                 <i class="fa fa-eye"></i> Details
@@ -115,11 +156,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+                <div class="panel panel-default float-e-margins">
+                    <div class="panel-heading">
                         <h5>Vos demandes en attentes</h5>
                     </div>
-                    <div class="ibox-content">
+                    <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
                             <thead>
                                 <tr>

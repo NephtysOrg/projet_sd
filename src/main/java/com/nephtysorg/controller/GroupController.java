@@ -137,7 +137,7 @@ public class GroupController {
     }
 
     @RequestMapping(value = "/group/edit/{id}", method = RequestMethod.POST)
-    public ModelAndView postEdit(@Valid @ModelAttribute("group") Group group, HttpServletRequest request, BindingResult result, RedirectAttributes redirectAttributes, @PathVariable Integer id) {
+    public ModelAndView postEdit(@Valid @ModelAttribute("group") Group group, BindingResult result, HttpServletRequest request,RedirectAttributes redirectAttributes, @PathVariable Integer id) {
         ModelAndView mv;
 
         if (result.hasErrors()) {
@@ -170,8 +170,13 @@ public class GroupController {
     }
 
     @RequestMapping(value = "/group/invite", method = RequestMethod.POST)
-    public ModelAndView postInvite(@RequestParam("users") List<Integer> allRequestParams,@RequestParam("group_id") Integer group_id, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+    public ModelAndView postInvite(@RequestParam(value = "users", required = false) List<Integer> allRequestParams,@RequestParam("group_id") Integer group_id, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("redirect:/group/show/"+group_id);
+        
+        if(allRequestParams == null){
+            return mv;
+        }
+         
         for (Integer i : allRequestParams) {
             System.out.println(i);
             User usr = this.userService.getUserById(i);

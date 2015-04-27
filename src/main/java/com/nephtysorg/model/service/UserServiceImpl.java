@@ -100,6 +100,18 @@ public class UserServiceImpl implements UserService {
         }
         return groups;
     }
+
+    @Override
+    public List<Group> getMemberGroups(User user) {
+        List <UserGroup> listUserGroup = this.userGroupDAO.listUserGroups();
+        List<Group> groups = new ArrayList<>();
+        for (UserGroup ug : listUserGroup) {
+            if(!ug.getGroup().getUser().getId().equals(user.getId()) && ug.getUser().getId().equals(user.getId()) && ug.getSubscribed()== 0 && ug.getInvited()== 0){
+                groups.add(ug.getGroup());
+            }
+        }
+        return groups;
+    }
     
     
 }

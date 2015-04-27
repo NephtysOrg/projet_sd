@@ -16,7 +16,6 @@ import com.nephtysorg.model.pojo.User;
 import com.nephtysorg.model.service.UserService;
 import com.nephtysorg.model.utils.Callout;
 import com.nephtysorg.model.utils.SessionUtil;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -130,7 +129,7 @@ public class UserController {
         if (result.hasErrors()) {
             return mv;
         } else if (this.userService.getUserByName(user.getLogin()) == null) {
-            redirectAttr.addAttribute("callout", new Callout("success", "Fellicitation", "Nous avons crée votre compte. Vous pouvez vous connecter."));
+            redirectAttr.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Nous avons crée votre compte. Vous pouvez vous connecter."));
             this.userService.addUser(user);
             mv = new ModelAndView("redirect:/user/login");
         } else {
@@ -157,6 +156,9 @@ public class UserController {
             
             Set<Group> groups = user.getGroups();
             mv.addObject("groups", groups);
+            
+            List<Group> member_groups = this.userService.getMemberGroups(user);
+            mv.addObject("member_groups", member_groups);
             
             List<Group> invitation_groups = this.userService.getInvitationGroups(user);
             mv.addObject("invitation_groups", invitation_groups);

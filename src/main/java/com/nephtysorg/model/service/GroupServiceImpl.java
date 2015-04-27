@@ -114,7 +114,7 @@ public class GroupServiceImpl implements GroupService {
         UserGroupId id = new UserGroupId(user.getId(), group.getId());
         UserGroup ug = this.userGroupDAO.getUserGroupById(id);
         ug.setSubscribed((byte)0);
-        
+        ug.setInvited((byte)0);
         this.userGroupDAO.updateUserGroup(ug);
     }
 

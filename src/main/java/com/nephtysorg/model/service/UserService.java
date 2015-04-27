@@ -19,4 +19,5 @@ public interface UserService {
     public boolean exist(User user);
     public List<Group> getInvitationGroups (User user);
     public List<Group> getSubscriptionGroups (User user);
+    public List<Group> getMemberGroups (User user);
 }
