@@ -21,3 +21,4 @@
 /var/www/netbeans/projet_sd/src/main/java/com/nephtysorg/model/pojo/Location.java
 /var/www/netbeans/projet_sd/src/main/java/com/nephtysorg/model/service/GroupServiceImpl.java
 /var/www/netbeans/projet_sd/src/main/java/com/nephtysorg/model/dao/UserDAOImpl.java
+/var/www/netbeans/projet_sd/src/main/java/com/nephtysorg/controller/HelpController.java

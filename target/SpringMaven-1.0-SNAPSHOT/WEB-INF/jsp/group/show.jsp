@@ -41,9 +41,19 @@
                             <h2>${group.getName()}</h2>
                         </div>
                         <dl class="dl-horizontal">
-                            <dt>Description</dt> <dd>${group.getDescription()}</dd>
+                            <dt>Description : </dt> <dd>${group.getDescription()}</dd>
                             <c:url var="admin_url" value="/user/show/${group.getUser().getId()}"/>
                             <dt>Créé par :</dt> <dd><a href="${admin_url}">${group.getUser().getLogin()}</a></dd>
+                            <dt>Membres : </dt><dd><c:if test="${group.getMembersNumber() > 0}">
+                                                <span class="animated badge badge-info">
+                                                    <c:out value="${group.getMembersNumber()}"></c:out>
+                                                    </span>
+                                            </c:if>
+                                            <c:if test="${group.getMembersNumber() eq 0}">
+                                                <span class="badge">
+                                                    <c:out value="${group.getMembersNumber()}"></c:out>
+                                                    </span>
+                                            </c:if></dd>
                         </dl>
                     </div>
                 </div>

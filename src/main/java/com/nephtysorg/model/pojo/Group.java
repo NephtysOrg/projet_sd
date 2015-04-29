@@ -87,6 +87,21 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         temp.clear();
         return result;
     }
+    
+    @Transient
+    public int getMembersNumber() {
+        int result = 0;
+        Set<UserGroup> temp;
+        temp = new HashSet<>(this.userGroups);
+        
+        for(UserGroup tmp : temp){
+            if(tmp.getSubscribed()+tmp.getInvited()== (byte)0){
+                result ++;
+            }
+        }
+        temp.clear();
+        return result;
+    }
 
     @Override
     public int compareTo(Object t) {

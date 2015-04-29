@@ -1,20 +1,28 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-    <c:if test="${not empty users}">
-        <c:forEach var="user" items="${users}">
-            <c:out value="${user.getId()}"/>
-            <c:out value="${user.getLogin()}"/>
-        </c:forEach>
-    </c:if>
-    <c:if test="${empty users}">
-        No users!
-    </c:if>
-    </body>
-</html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<t:layout>
+    <jsp:attribute name="header">
+        Tous les utilisateurs
+    </jsp:attribute>
+    <jsp:body>
+        <c:if test="${not empty users}">
+            <div class="row">
+                <c:forEach var="user" items="${users}">
+                    <div class="col-lg-4">
+                        <div class="contact-box">
+                            <a href="<c:url value="/user/show/${user.getId()}"/>">
+                                <div class="col-sm-8">
+                                    <h3><strong>${user.getLogin()}</strong></h3>
+                                    <p><i class="fa fa-map-marker"></i> ${user.getLocation().getLabel()}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:if>
+    </jsp:body>
+</t:layout>

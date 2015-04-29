@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>INSPINIA | Login</title>
+        <title>Chat++ | Nouveau compte</title>
 
 
         <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">

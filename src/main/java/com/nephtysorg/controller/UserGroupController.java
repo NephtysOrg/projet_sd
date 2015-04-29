@@ -69,7 +69,7 @@ public class UserGroupController {
                 }
             }
 
-            mv = new ModelAndView("redirect:/home");
+            mv = new ModelAndView("redirect:/group/show/"+id_group);
             return mv;
         }
     }

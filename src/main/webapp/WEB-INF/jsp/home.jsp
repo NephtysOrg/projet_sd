@@ -19,7 +19,7 @@
             <div class="col-md-7">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading">
-                        <h5>Vos groupes</h5>
+                        <h5>Mes groupes</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -27,7 +27,8 @@
                                 <tr>
                                     <th>Nom</th>
                                     <th>Description</th>
-                                    <th>Demandes en attente</th>
+                                    <th>Demandes</th>
+                                    <th>Membres</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -39,17 +40,28 @@
                                             </td>
                                             <td>
                                             <c:out value="${group.getDescription()}"></c:out>
-
                                             </td> 
                                             <td>
                                             <c:if test="${group.getSubscriptionNumber() > 0}">
-                                                <span class="badge badge-info">
+                                                <span class="animated bounce badge badge-info">
                                                     <c:out value="${group.getSubscriptionNumber()}"></c:out>
                                                     </span>
                                             </c:if>
                                             <c:if test="${group.getSubscriptionNumber() eq 0}">
                                                 <span class="badge">
                                                     <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                                    </span>
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                             <c:if test="${group.getMembersNumber() > 0}">
+                                                <span class="animated badge badge-info">
+                                                    <c:out value="${group.getMembersNumber()}"></c:out>
+                                                    </span>
+                                            </c:if>
+                                            <c:if test="${group.getMembersNumber() eq 0}">
+                                                <span class="badge">
+                                                    <c:out value="${group.getMembersNumber()}"></c:out>
                                                     </span>
                                             </c:if>
                                         </td>

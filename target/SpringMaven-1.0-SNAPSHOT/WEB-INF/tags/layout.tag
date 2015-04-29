@@ -1,7 +1,9 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
+<c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}" />
 
 <!DOCTYPE html>
 <html>
@@ -10,12 +12,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Chat ++ | Empty Page</title>
+        <title>Chat ++</title>
 
         <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/font-awesome/css/font-awesome.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/plugins/chosen/chosen.css"/>" rel="stylesheet">
-        
+
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.bootstrap.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.responsive.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/plugins/dataTables/dataTables.tableTools.min.css"/>" rel="stylesheet">
@@ -48,15 +50,21 @@
                             </div>
                         </li>
                         <li><div class="divider"></div></li>
-                        <li>
+                        <li <c:if test="${fn:contains(url, 'home')}">class="active"</c:if>>
                             <a href="<c:url value="/home"/>"><i class="fa fa-home"></i> <span class="nav-label">Espace personnel</span> </a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-group"></i> <span class="nav-label">Groupes</span><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a class="fa fa-plus" href="<c:url value="/group/create"/>"> Créer un groupe</a></li>
-                                <li><a class="fa fa-list-alt" href="<c:url value="/group/index"/>"> Voir les groupes</a></li>
-                            </ul>
+                        <li <c:if test="${fn:contains(url, 'group')}">class="active"</c:if>>
+                                <a href="#"><i class="fa fa-coffee"></i> <span class="nav-label">Groupes</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li <c:if test="${fn:contains(url, 'group/create')}">class="active"</c:if>><a class="" href="<c:url value="/group/create"/>"> Créer un groupe</a></li>
+                                <li <c:if test="${fn:contains(url, 'group/index')}">class="active"</c:if>><a class="" href="<c:url value="/group/index"/>"> Voir les groupes</a></li>
+                                </ul>
+                            </li>
+                            <li <c:if test="${fn:contains(url, 'help/index')}">class="active"</c:if>>
+                            <a href="<c:url value="/help/index"/>"><i class="fa fa-question-circle"></i> <span class="nav-label">Aide</span> </a>
+                        </li>
+                        <li <c:if test="${fn:contains(url, 'user')}">class="active"</c:if>>
+                            <a href="<c:url value="/user/index"/>"><i class="fa fa-users"></i> <span class="nav-label">Utilisateurs</span> </a>
                         </li>
                     </ul>
 
@@ -70,7 +78,7 @@
                             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                         </div>
                         <ul class="nav navbar-top-links navbar-right">
-                            <li><a href="user/show/${user.getId()}"><c:out value="${user.getLogin()}"/></a></li>
+                            <li><a href="<c:url value="/user/show/${user.getId()}"/>"><c:out value="${user.getLogin()}"/></a></li>
                             <li>
                                 <a href="<c:url value="/user/logout"/>">
                                     <i class="fa fa-sign-out"></i> Deconnexion
@@ -90,20 +98,20 @@
                 </div>
                 <div class="wrapper wrapper-content animated fadeInRight">
                     <c:if test="${not empty callout}">
-                        <div class="alert alert-${callout.getType()} alert-dismissable">
+                        <div class="animated bounceInDown alert alert-${callout.getType()} alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                             <c:choose>
-                                <c:when test="${callout.getType() eq \"warning\"}">
+                                <c:when test="${callout.getType() eq 'warning'}">
                                     <i class="fa fa-warning"></i>
                                 </c:when>
-                                 <c:when test="${callout.getType() eq 'success'}">
-                                    <i class="fa fa-check"></i>
+                                <c:when test="${callout.getType() eq 'success'}">
+                                    <i class="fa fa-info"></i>
                                 </c:when>
-                                 <c:when test="${callout.getType() eq 'danger'}">
+                                <c:when test="${callout.getType() eq 'danger'}">
                                     <i class="fa fa-ban"></i>
                                 </c:when>
                             </c:choose>
-                             <b><c:out value="${callout.getTitle()}"/>. </b>
+                            <b><c:out value="${callout.getTitle()}"/>. </b>
                             <c:out value="${callout.getContent()}"/>
                         </div>
                     </c:if>
@@ -112,7 +120,7 @@
                 </div>
                 <div class="footer">
                     <div>
-                        <strong>Copyright</strong> Example Company © 2014-2015
+                        <strong>Copyright</strong> Charles Follet © 2014-2015
                     </div>
                 </div>
 
