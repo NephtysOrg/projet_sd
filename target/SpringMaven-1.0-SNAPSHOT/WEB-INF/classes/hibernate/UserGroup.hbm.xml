@@ -28,5 +28,8 @@
                 <comment>0 or 1 to indicate true or false</comment>
             </column>
         </property>
+        <property name="member_since" type="timestamp">
+            <column name="member_since" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

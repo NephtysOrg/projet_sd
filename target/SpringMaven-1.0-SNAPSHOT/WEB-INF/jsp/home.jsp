@@ -85,7 +85,7 @@
             <div class="col-md-5">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading">
-                        <h5>Les groupes dont vous étes membres</h5>
+                        <h5>Les groupes dont je suis membre</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -127,7 +127,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default float-e-margins">
                     <div class="panel-heading">
-                        <h5>Vos invitations</h5>
+                        <h5>Mes invitations</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -170,7 +170,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default float-e-margins">
                     <div class="panel-heading">
-                        <h5>Vos demandes en attentes</h5>
+                        <h5>Mes demandes en attentes</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >

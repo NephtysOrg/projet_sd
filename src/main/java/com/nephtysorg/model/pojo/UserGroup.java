@@ -1,9 +1,7 @@
 package com.nephtysorg.model.pojo;
 // Generated 20 avr. 2015 10:17:30 by Hibernate Tools 4.3.1
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-
+import java.util.Date;
 
 
 
@@ -13,12 +11,12 @@ import org.hibernate.annotations.NotFoundAction;
 
 public class UserGroup  implements java.io.Serializable {
 
-    @NotFound(action=NotFoundAction.IGNORE)
      private UserGroupId id;
      private Group group;
      private User user;
      private byte invited;
      private byte subscribed;
+     private Date member_since;
 
     public UserGroup() {
     }
@@ -67,8 +65,13 @@ public class UserGroup  implements java.io.Serializable {
         this.subscribed = subscribed;
     }
 
+    public Date getMember_since() {
+        return member_since;
+    }
 
-
+    public void setMember_since(Date member_since) {
+        this.member_since = member_since;
+    }
 
 }
 

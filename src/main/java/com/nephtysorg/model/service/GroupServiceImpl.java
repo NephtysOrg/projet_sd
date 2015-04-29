@@ -12,6 +12,7 @@ import com.nephtysorg.model.pojo.Group;
 import com.nephtysorg.model.pojo.User;
 import com.nephtysorg.model.pojo.UserGroup;
 import com.nephtysorg.model.pojo.UserGroupId;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -115,6 +116,7 @@ public class GroupServiceImpl implements GroupService {
         UserGroup ug = this.userGroupDAO.getUserGroupById(id);
         ug.setSubscribed((byte)0);
         ug.setInvited((byte)0);
+        ug.setMember_since(new Date());
         this.userGroupDAO.updateUserGroup(ug);
     }
 
