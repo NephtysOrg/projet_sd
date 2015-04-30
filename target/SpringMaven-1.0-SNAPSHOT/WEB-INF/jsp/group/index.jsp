@@ -15,11 +15,11 @@
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Tous les groupes</h5>
+                <div class="panel panel-default float-e-margins">
+                    <div class="panel-heading">
+                        Tous les groupes
                     </div>
-                    <div class="ibox-content">
+                    <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover datatable" >
                             <thead>
                             <th>Nom</th>
@@ -49,10 +49,12 @@
                                                     <i class="fa fa-edit"></i> Editer
                                                 </a>
                                             </c:if>
+
                                             <c:if test="${!user.getGroups().contains(group)}">
-                                                <form:form action="join" commandName="group">
+                                                <c:url var="url_join" value="/group/join"/>
+                                                <form:form action="${url_join}" commandName="group">
                                                     <input type="hidden" name="id" value="${group.getId()}"/>
-                                                    <button type="submit" class="btn btn-warning btn-xs"> <i class="fa fa-check"></i> Postuler</button>
+                                                    <button type="submit" class="btn btn-warning btn-xs <c:if test="${group.getSubscribers().contains(user)}">disabled</c:if>"> <i class="fa fa-check"></i> Postuler</button>
                                                 </form:form>
                                             </c:if>
 
@@ -64,5 +66,6 @@
                     </div>
                 </div>
             </div>
-        </jsp:body>
-    </t:layout>
+        </div>
+    </jsp:body>
+</t:layout>

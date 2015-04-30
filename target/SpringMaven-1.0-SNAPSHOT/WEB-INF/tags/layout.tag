@@ -60,11 +60,11 @@
                                 <li <c:if test="${fn:contains(url, 'group/index')}">class="active"</c:if>><a class="" href="<c:url value="/group/index"/>"> Voir les groupes</a></li>
                                 </ul>
                             </li>
-                            <li <c:if test="${fn:contains(url, 'help/index')}">class="active"</c:if>>
-                            <a href="<c:url value="/help/index"/>"><i class="fa fa-question-circle"></i> <span class="nav-label">Aide</span> </a>
-                        </li>
-                        <li <c:if test="${fn:contains(url, 'user')}">class="active"</c:if>>
+                            <li <c:if test="${fn:contains(url, 'user')}">class="active"</c:if>>
                             <a href="<c:url value="/user/index"/>"><i class="fa fa-users"></i> <span class="nav-label">Utilisateurs</span> </a>
+                        </li>
+                        <li <c:if test="${fn:contains(url, 'help/index')}">class="active"</c:if>>
+                            <a href="<c:url value="/help/index"/>"><i class="fa fa-question-circle"></i> <span class="nav-label">Aide</span> </a>
                         </li>
                     </ul>
 

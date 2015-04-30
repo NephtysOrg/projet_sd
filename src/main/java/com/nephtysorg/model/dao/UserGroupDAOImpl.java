@@ -43,7 +43,7 @@ public class UserGroupDAOImpl implements UserGroupDAO {
     @Override
     public List<UserGroup> listUserGroups() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<UserGroup> userGroupList = session.createQuery("from UserGroup").list();
+        List<UserGroup> userGroupList = session.createQuery("from UserGroup order by member_since desc").list();
         return userGroupList;
     }
 

@@ -8,13 +8,17 @@
     </jsp:attribute>
     <jsp:body>
         <div class="row">
-            <div class="col-lg-7">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Création <small>Veuillez remplir les informations</small></h5>
-                    </div>
-                    <div class="ibox-content">
-                        <form:form action="create"  commandName="group">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form:form action="create"  commandName="group">
+                    <div class="panel panel-default float-e-margins">
+                        <div class="panel-heading text-center">
+                            Création <br>
+                            <small>Veuillez remplir les informations</small>
+
+                        </div>
+                        <div class="panel-body">
+
                             <div class="form-group">
                                 <label>Nom</label>
                                 <form:input path="name" cssClass="form-control" placeholder="Nom"/>
@@ -22,14 +26,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                 <form:textarea path="description" cssClass="form-control" placeholder="Description"/>
-                                 <form:errors path="description" cssClass="text-danger"/>
+                                <form:textarea path="description" cssClass="form-control" placeholder="Description"/>
+                                <form:errors path="description" cssClass="text-danger"/>
                             </div>
+
+
+                        </div>
+                        <div class="panel-footer text-center">
                             <button type="submit" class="btn btn-primary">Valider</button>
-                            </form:form>
                         </div>
                     </div>
-                </div>
+                </form:form>
+            </div>
         </div>
     </jsp:body>
 </t:layout>

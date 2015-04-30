@@ -2,7 +2,9 @@ package com.nephtysorg.model.pojo;
 // Generated 20 avr. 2015 10:17:30 by Hibernate Tools 4.3.1
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Transient;
@@ -103,6 +105,36 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return result;
     }
 
+        
+    @Transient
+    public List<User> getMembers() {
+        Set<UserGroup> temp;
+        List<User> result = new ArrayList<>();
+        temp = new HashSet<>(this.userGroups);
+        
+        for(UserGroup tmp : temp){
+            if(tmp.getSubscribed()+tmp.getInvited()== (byte)0 && this.user!=tmp.getUser()){
+                result.add(tmp.getUser());
+            }
+        }
+        return result;
+    }
+    
+        @Transient
+    public List<User> getSubscribers() {
+        Set<UserGroup> temp;
+        List<User> result = new ArrayList<>();
+        temp = new HashSet<>(this.userGroups);
+        
+        for(UserGroup tmp : temp){
+            if(tmp.getSubscribed()== (byte)1){
+                result.add(tmp.getUser());
+            }
+        }
+        temp.clear();
+        return result;
+    }
+    
     @Override
     public int compareTo(Object t) {
         Group g = (Group) t;
