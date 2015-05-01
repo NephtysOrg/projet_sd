@@ -3458,6 +3458,14 @@ table.table-mail tr td {
   background-color: #1ab394;
   border-color: #1ab394;
 }
+.panel-green {
+  border-color: #5ec9b4;
+}
+.panel-green > .panel-heading {
+  background-color: #5ec9b4;
+  color: #FFF;
+  border-color: #5ec9b4;
+}
 .panel-success {
   border-color: #1c84c6;
 }

@@ -20,11 +20,10 @@ public interface GroupService {
     public Group getGroupById(int id);
     public Group getGroupByName(String name);
     public void removeGroup(int id);
+    public boolean exist(Group group);
     
     public void invite(User user,Group group);
     public void subscribe (User user, Group group);
     public void discard(User user, Group group);
-    
     public void accept(User user, Group group);
-    public boolean exist(Group group);
 }

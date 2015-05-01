@@ -56,7 +56,7 @@
                         <li <c:if test="${fn:contains(url, 'group')}">class="active"</c:if>>
                                 <a href="#"><i class="fa fa-coffee"></i> <span class="nav-label">Groupes</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li <c:if test="${fn:contains(url, 'group/create')}">class="active"</c:if>><a class="" href="<c:url value="/group/create"/>"> Créer un groupe</a></li>
+                                    <li <c:if test="${fn:contains(url, 'group/create')}">class="active"</c:if>><a class="" href="<c:url value="/group/create"/>"> Créez un groupe</a></li>
                                 <li <c:if test="${fn:contains(url, 'group/index')}">class="active"</c:if>><a class="" href="<c:url value="/group/index"/>"> Voir les groupes</a></li>
                                 </ul>
                             </li>

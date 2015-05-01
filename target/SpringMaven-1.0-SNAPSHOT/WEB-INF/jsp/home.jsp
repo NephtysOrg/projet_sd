@@ -16,7 +16,7 @@
     </jsp:attribute>
     <jsp:body>
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading">
                         <h5>Mes groupes</h5>
@@ -82,7 +82,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+        </div>
+        <div class="row">
+             <div class="col-md-12">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading">
                         <h5>Les groupes dont je suis membre</h5>
@@ -125,9 +127,9 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default float-e-margins">
+                <div class="panel panel-green float-e-margins">
                     <div class="panel-heading">
-                        <h5>Mes invitations</h5>
+                        <h5>Mes invitations en attente</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -168,9 +170,9 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="panel panel-default float-e-margins">
+                <div class="panel panel-green float-e-margins">
                     <div class="panel-heading">
-                        <h5>Mes demandes en attentes</h5>
+                        <h5>Mes demandes en attente</h5>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >

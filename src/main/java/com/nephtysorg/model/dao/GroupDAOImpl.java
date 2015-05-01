@@ -7,7 +7,6 @@ package com.nephtysorg.model.dao;
 
 import java.util.List;
 import com.nephtysorg.model.pojo.Group;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

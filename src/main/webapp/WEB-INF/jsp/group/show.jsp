@@ -63,16 +63,7 @@
 
                         </div>
                     </c:if>
-                    <c:if test="${!group.getMembers().contains(user)}">
-                        <div class="panel-footer text-center">
-                            <c:url var="url_join" value="/group/join"/>
-                                                <form:form action="${url_join}" commandName="group">
-                                                    <input type="hidden" name="id" value="${group.getId()}"/>
-                                                    <button type="submit" class="btn btn-warning btn-xs <c:if test="${group.getSubscribers().contains(user)}">disabled</c:if>"> <i class="fa fa-check"></i> Postuler</button>
-                                                </form:form>
-
-                        </div>
-                    </c:if>
+                   
                 </div>
             </div>
 
@@ -85,7 +76,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <label class="font-normal">Invitez des utilisateurs</label>
+                                    <label class="font-normal">Nom des invités</label>
                                     <div class="input-group">
                                         <input type="hidden" name="group_id" value="${group.getId()}"/>
                                         <select name="users" data-placeholder="Saisisez un nom" class="chosen-select" multiple style="width:200px;" tabindex="4">

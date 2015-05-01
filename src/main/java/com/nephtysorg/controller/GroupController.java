@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.nephtysorg.controller;
 
 import java.util.List;
@@ -15,7 +10,6 @@ import com.nephtysorg.model.service.GroupService;
 import com.nephtysorg.model.service.UserService;
 import com.nephtysorg.model.utils.Callout;
 import com.nephtysorg.model.utils.SessionUtil;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -162,6 +156,8 @@ public class GroupController {
     @RequestMapping(value = "/group/show/{id}", method = RequestMethod.GET)
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/group/show");
+        User user = SessionUtil.getSessionUser(request);
+         user = this.userService.getUserById(user.getId());
         Group group = this.groupService.getGroupById(id);
         List<User> users = this.userService.listUsers();
         mv.addObject("group", group);

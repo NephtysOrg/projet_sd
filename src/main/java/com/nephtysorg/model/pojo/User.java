@@ -4,7 +4,6 @@ package com.nephtysorg.model.pojo;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
 
 /**

@@ -54,7 +54,7 @@
                                                 <c:url var="url_join" value="/group/join"/>
                                                 <form:form action="${url_join}" commandName="group">
                                                     <input type="hidden" name="id" value="${group.getId()}"/>
-                                                    <button type="submit" class="btn btn-warning btn-xs <c:if test="${group.getSubscribers().contains(user)}">disabled</c:if>"> <i class="fa fa-check"></i> Postuler</button>
+                                                    <button type="submit" class="btn btn-warning btn-xs"> <i class="fa fa-check"></i> Postuler</button>
                                                 </form:form>
                                             </c:if>
 

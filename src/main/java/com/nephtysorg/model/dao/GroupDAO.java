@@ -19,5 +19,5 @@ public interface GroupDAO {
     public Group getGroupById(int id);
     public Group getGroupByName(String name);
     public void removeGroup(int id);
-    public boolean exist(Group group);
+    public boolean exist(Group group);  // Optionnal
 }
