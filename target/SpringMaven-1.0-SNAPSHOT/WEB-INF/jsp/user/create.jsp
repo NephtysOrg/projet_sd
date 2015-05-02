@@ -11,9 +11,11 @@
 
 
         <link href="<c:url value="/assets/css/bootstrap.min.css"/>" rel="stylesheet">
-        <link href="<c:url value="/assets/ont-awesome/css/font-awesome.css"/>" rel="stylesheet">
+        <link href="<c:url value="/assets/font-awesome/css/font-awesome.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/animate.css"/>" rel="stylesheet">
         <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet">
+        <link href="<c:url value="/assets/css/plugins/jquery-ui/jquery-ui.min.css"/>" rel="stylesheet">
+        <link href="<c:url value="/assets/css/plugins/jquery-ui/jquery-ui.theme.min.css"/>" rel="stylesheet">
 
         <style type="text/css"></style></head>
 
@@ -56,7 +58,7 @@
                         <form:errors path="password" cssClass="text-danger"/>
                     </div>
                     <div class="form-group">
-                        <form:input path="location.label" cssClass="form-control" placeholder="Localisation" />
+                        <form:input id="location" path="location.label" cssClass="form-control" placeholder="Localisation" />
                         <form:errors path="location.label" cssClass="text-danger"/>
                     </div>
                     <button type="submit" class="btn btn-primary block full-width m-b">Valider</button>
@@ -71,7 +73,21 @@
         <!-- Mainly scripts -->
         <script src="<c:url value="/assets/js/jquery-2.1.1.js"/>"></script>
         <script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
-
+         <script src="<c:url value="/assets/js/jquery-ui-1.10.4.min.js"/>"></script>
+        
+      <script>
+$(document).ready(function() {
+var dataSource = [
+<c:forEach items="${locations}" var="loc">
+        "${loc}",
+</c:forEach>
+    ];
+	$('#location').autocomplete({
+                source: dataSource
+	 });
+ 
+  });
+  </script>
 
 
 

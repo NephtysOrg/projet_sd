@@ -7,6 +7,7 @@ package com.nephtysorg.model.service;
 
 import java.util.List;
 import com.nephtysorg.model.pojo.Group;
+import com.nephtysorg.model.pojo.Location;
 import com.nephtysorg.model.pojo.User;
  
 public interface UserService {
@@ -17,6 +18,7 @@ public interface UserService {
     public User getUserByName(String name);
     public void removeUser(int id);
     public boolean exist(User user);
+    public List<Location> listLocations();
     public List<Group> getInvitationGroups (User user);
     public List<Group> getSubscriptionGroups (User user);
     public List<Group> getMemberGroups (User user);

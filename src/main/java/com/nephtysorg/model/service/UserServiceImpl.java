@@ -9,6 +9,7 @@ import com.nephtysorg.model.dao.LocationDAO;
 import com.nephtysorg.model.dao.UserDAO;
 import com.nephtysorg.model.dao.UserGroupDAO;
 import com.nephtysorg.model.pojo.Group;
+import com.nephtysorg.model.pojo.Location;
 import com.nephtysorg.model.pojo.User;
 import com.nephtysorg.model.pojo.UserGroup;
 import java.util.ArrayList;
@@ -111,6 +112,11 @@ public class UserServiceImpl implements UserService {
             }
         }
         return groups;
+    }
+
+    @Override
+    public List<Location> listLocations() {
+        return this.locationDAO.listLocations();
     }
     
     

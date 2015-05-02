@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import com.nephtysorg.model.pojo.Group;
+import com.nephtysorg.model.pojo.Location;
 import com.nephtysorg.model.pojo.User;
 import com.nephtysorg.model.service.UserService;
 import com.nephtysorg.model.utils.Callout;
 import com.nephtysorg.model.utils.SessionUtil;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -113,9 +117,17 @@ public class UserController {
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
     public ModelAndView getCreate(Model model) {
         ModelAndView mv = new ModelAndView("/user/create");
+        List<Location> locationList = this.userService.listLocations();
+        List<String> stringList = new ArrayList<>();
+        for (Location tmp : locationList) {
+            stringList.add(tmp.getLabel());
+        }
+        mv.addObject("locations", stringList);
         model.addAttribute(new User());
         return mv;
     }
+    
+   
 
     /**
      *
