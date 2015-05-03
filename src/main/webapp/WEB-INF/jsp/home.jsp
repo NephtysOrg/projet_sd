@@ -54,7 +54,7 @@
                                             </c:if>
                                         </td>
                                         <td>
-                                             <c:if test="${group.getMembersNumber() > 0}">
+                                            <c:if test="${group.getMembersNumber() > 0}">
                                                 <span class="animated badge badge-info">
                                                     <c:out value="${group.getMembersNumber()}"></c:out>
                                                     </span>
@@ -84,7 +84,7 @@
             </div>
         </div>
         <div class="row">
-             <div class="col-md-12">
+            <div class="col-md-12">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading">
                         <h5>Les groupes dont je suis membre</h5>
@@ -108,10 +108,32 @@
                                             <c:out value="${group.getDescription()}"></c:out>
 
                                             </td> 
-                                        <td>
-                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${user.getId()}"/>" class="btn btn-danger btn-xs">
-                                                <i class="fa fa-ban"></i> Quitter
-                                            </a>
+                                            <td>
+                                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-${group.getId()}"><i class="fa fa-ban"></i> 
+                                                Quitter
+                                            </button>
+                                            <div class="modal inmodal fade" id="modal-${group.getId()}" tabindex="-1" role="dialog"  aria-hidden="true">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                            <h4 class="modal-title">Validation</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Vous êtes sur le point de quitter le groupe <strong>${group.getName()}</strong>.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white" data-dismiss="modal">Annuler</button>
+                                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${user.getId()}"/>" class="btn btn-primary">
+                                                                Valider
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                             <br/>
                                             <a href="<c:url value="/group/show/${group.getId()}"/>" class="btn btn-info btn-xs">
                                                 <i class="fa fa-eye"></i> Details

@@ -12,6 +12,9 @@
             });
         </script>
     </jsp:attribute>
+   <jsp:attribute name="header">
+       Les groupes
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">

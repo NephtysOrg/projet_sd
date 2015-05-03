@@ -44,17 +44,48 @@
                             <dt>Description : </dt> <dd>${group.getDescription()}</dd>
                             <c:url var="admin_url" value="/user/show/${group.getUser().getId()}"/>
                             <dt>Créé par :</dt> <dd><a href="${admin_url}">${group.getUser().getLogin()}</a></dd>
-                            <dt>Membres : </dt><dd><c:if test="${group.getMembersNumber() > 0}">
-                                    <span class="animated badge badge-info">
-                                        <c:out value="${group.getMembersNumber()}"></c:out>
-                                        </span>
+                            <dt>Membres : </dt>
+                            <dd>
+                                <c:if test="${group.getMembersNumber() > 0}">
+                                    <span class="animated badge badge-info"><c:out value="${group.getMembersNumber()}"></c:out></span>
                                 </c:if>
                                 <c:if test="${group.getMembersNumber() eq 0}">
-                                    <span class="badge">
-                                        <c:out value="${group.getMembersNumber()}"></c:out>
-                                        </span>
-                                </c:if></dd>
+                                    <span class="badge"> <c:out value="${group.getMembersNumber()}"></c:out></span>
+                                </c:if>
+                            </dd>
+                            <c:forEach items="${group.getMembers()}" var="group_member">
+                                <dd>
+                                    ${group_member.getLogin()}
+                                    <c:if test="${group.getUser().getId() eq user.getId()}">
+                                        <button class="text-danger btn btn-xs btn-link" data-toggle="modal" data-target="#modal-${group_member.getId()}">
+                                            <i class="fa fa-ban"></i> 
+                                        </button>
+                                        <div class="modal inmodal fade" id="modal-${group_member.getId()}" tabindex="-1" role="dialog"  aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title">Validation</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Vous êtes sur le point d'expulser <strong>${group_member.getLogin()}</strong> du groupe <strong>${group.getName()}</strong>.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal">Annuler</button>
+                                                        <a href="<c:url value="/user_group/discard/${group.getId()}/${group_member.getId()}"/>" class="btn btn-primary">
+                                                            Valider
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </dd>                                                        
+
+
+                            </c:forEach>
                         </dl>
+
                     </div>
                     <c:if test="${group.getUser().getId() eq user.getId()}">
                         <div class="panel-footer text-center">
@@ -63,7 +94,7 @@
 
                         </div>
                     </c:if>
-                   
+
                 </div>
             </div>
 
@@ -189,9 +220,6 @@
                                                 <c:otherwise>
                                                     <h2>
                                                         ${usr.getLogin()}
-                                                        <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
-                                                            <i class="fa fa-ban"></i> Expulser
-                                                        </a>
                                                     </h2>
                                                     <p>A join le groupe !</p>
                                                 </c:otherwise>
@@ -205,8 +233,6 @@
                                     </div>
                                 </c:if>
                             </c:forEach>
-
-
                         </div>
                     </div>
                 </div>
