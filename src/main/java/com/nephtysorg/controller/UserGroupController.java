@@ -68,8 +68,8 @@ public class UserGroupController {
                     redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Erreur", "Vous êtes administrateur de " + group.getName() + ", vous ne pouvez le quitter."));
                 }
             }
-
-            mv = new ModelAndView("redirect:/group/show/"+id_group);
+            String referer = request.getHeader("Referer");
+            mv = new ModelAndView("redirect:"+ referer);
             return mv;
         }
     }
@@ -86,7 +86,8 @@ public class UserGroupController {
             user = this.userService.getUserById(id_user);
             this.groupService.accept(user, group);
             redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "L'utilisateur " + user.getLogin() + " à été accepté dans le groupe " + group.getName() + "."));
-            mv = new ModelAndView("redirect:/home");
+            String referer = request.getHeader("Referer");
+            mv = new ModelAndView("redirect:"+ referer);
             return mv;
         }
     }

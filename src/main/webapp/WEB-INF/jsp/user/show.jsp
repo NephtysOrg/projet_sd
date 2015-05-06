@@ -4,7 +4,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:layout>
     <jsp:attribute name="header">
-        Détails de l'utilisateur
+        <h2>Détails de l'utilisateur</h2>
+        <ol class="breadcrumb">
+            <li><a href="<c:url value="/user/index"/>">Utilisateurs</a></li>
+            <li class="active"><strong>Details de l'utilisateur</strong></li>
+        </ol>
     </jsp:attribute>
     <jsp:body>
         <div class="row">

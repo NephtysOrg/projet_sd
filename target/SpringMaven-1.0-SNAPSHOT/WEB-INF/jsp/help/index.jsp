@@ -5,7 +5,11 @@
 
 <t:layout>
     <jsp:attribute name="header">
-        <h1>Aide</h1>
+        <h2>Aide</h2>
+        <ol class="breadcrumb">
+            <li class="active"><strong>Aide</strong></li>
+           <li></li>
+        </ol>
     </jsp:attribute>
     <jsp:body>
         <div class="row">

@@ -6,7 +6,15 @@
 
 <t:layout>
     <jsp:attribute name="header">
-        Détails de groupe
+        <h2>Détails de groupe</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<c:url value="/group/index"/>">Groupes</a>
+            </li>
+            <li class="active">
+                <strong>Détails de groupe</strong>
+            </li>
+        </ol>
     </jsp:attribute>
     <jsp:attribute name="footer">
         <script>
@@ -65,7 +73,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                        <h4 class="modal-title">Validation</h4>
+                                                        <h4 class="modal-title">Confirmation</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>Vous êtes sur le point d'expulser <strong>${group_member.getLogin()}</strong> du groupe <strong>${group.getName()}</strong>.</p>
@@ -165,7 +173,7 @@
                                                     <br/>
                                                     <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getSubscribed() eq 1)}">
 
-                                                        <a href="<c:url value="/user_group/accept/${group.getId()}/${usr.getId()}"/>" class="btn btn-warning btn-xs">
+                                                        <a href="<c:url value="/user_group/accept/${group.getId()}/${usr.getId()}"/>" class="btn btn-primary btn-xs">
                                                             <i class="fa fa-check"></i> Accepter
                                                         </a>
                                                         <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">

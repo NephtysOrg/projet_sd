@@ -4,7 +4,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:layout>
     <jsp:attribute name="header">
-        Tous les utilisateurs
+        <h2>Tous les utilisateurs</h2>
+        <ol class="breadcrumb">
+           <li class="active"><strong>Utilisateurs</strong></li>
+           <li></li>
+        </ol>
     </jsp:attribute>
     <jsp:body>
         <c:if test="${not empty users}">

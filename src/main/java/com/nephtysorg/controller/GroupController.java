@@ -157,7 +157,11 @@ public class GroupController {
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/group/show");
         User user = SessionUtil.getSessionUser(request);
-         user = this.userService.getUserById(user.getId());
+        if (user == null) {
+            mv = new ModelAndView("redirect:/user/login");
+            return mv;
+        }
+        user = this.userService.getUserById(user.getId());
         Group group = this.groupService.getGroupById(id);
         List<User> users = this.userService.listUsers();
         mv.addObject("group", group);

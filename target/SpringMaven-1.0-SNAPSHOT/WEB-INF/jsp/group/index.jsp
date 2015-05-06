@@ -13,7 +13,11 @@
         </script>
     </jsp:attribute>
    <jsp:attribute name="header">
-       Les groupes
+       <h2>Les groupes</h2>
+       <ol class="breadcrumb">
+           <li class="active"><strong>Groupes</strong></li>
+           <li></li>
+        </ol>
     </jsp:attribute>
     <jsp:body>
         <div class="row">

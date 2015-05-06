@@ -90,7 +90,7 @@
                 </div>
                 <div class="row wrapper border-bottom white-bg page-heading">
                     <div class="col-lg-10">
-                        <h2><jsp:invoke fragment="header"/></h2>
+                        <jsp:invoke fragment="header"/>
                     </div>
                     <div class="col-lg-2">
 

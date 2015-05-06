@@ -5,7 +5,11 @@
 
 <t:layout>
     <jsp:attribute name="header">
-        <h1>Espace personnel</h1>
+        <h2>Espace personnel</h2>
+        <ol class="breadcrumb">
+            <li class="active"><strong>Espace personnel</strong></li>
+           <li></li>
+        </ol>
     </jsp:attribute>
     <jsp:attribute name="footer">
         <script>
@@ -43,8 +47,8 @@
                                             </td> 
                                             <td>
                                             <c:if test="${group.getSubscriptionNumber() > 0}">
-                                                <span class="animated bounce badge badge-info">
-                                                    <c:out value="${group.getSubscriptionNumber()}"></c:out>
+                                                <span class="animated bounce badge badge-info"><a href="<c:url value="/group/show/${group.getId()}"/>">
+                                                        <c:out value="${group.getSubscriptionNumber()}"></c:out></a>
                                                     </span>
                                             </c:if>
                                             <c:if test="${group.getSubscriptionNumber() eq 0}">
@@ -175,7 +179,7 @@
                                                 <a href="<c:url value="/user_group/discard/${group.getId()}/${user.getId()}"/>" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-times"></i> Refuser
                                             </a>
-                                            <a href="<c:url value="/user_group/accept/${group.getId()}/${user.getId()}"/>" class="btn btn-warning btn-xs">
+                                            <a href="<c:url value="/user_group/accept/${group.getId()}/${user.getId()}"/>" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-check"></i> Accepter
                                             </a>
                                             <br>
