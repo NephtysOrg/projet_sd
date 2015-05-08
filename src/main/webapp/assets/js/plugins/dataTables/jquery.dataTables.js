@@ -11091,7 +11091,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Affiche _START_ sur _END_ pour un total de _TOTAL_ items",
 	
 	
 			/**
@@ -11112,7 +11112,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Affiche _0_ sur _0_ pour un total de _0_ items",
 	
 	
 			/**

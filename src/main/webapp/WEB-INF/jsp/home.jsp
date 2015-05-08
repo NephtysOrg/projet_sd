@@ -21,8 +21,9 @@
     <jsp:body>
         <div class="row">
             <div class="col-md-12">
+                <c:if test="${groups.size() !=  0}">
                 <div class="panel panel-primary float-e-margins">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h5>Mes groupes</h5>
                     </div>
                     <div class="panel-body">
@@ -85,12 +86,26 @@
 
                     </div>
                 </div>
-            </div>
+                </c:if>
+                <c:if test="${groups.size() == 0}">
+                    <div class="widget  p-lg text-center">
+                        <div class="m-b-md">
+                            <i class="fa fa-bell-o fa-4x"></i>
+                          
+                            <h3 class="font-bold no-margins">
+                                Vous n'avez pas encore de groupe.
+                            </h3>
+                            <small><a href="<c:url value="/group/create"/>">Créez un groupe</a></small>
+                        </div>
+                    </div>
+                </c:if>
+                </div>
         </div>
         <div class="row">
             <div class="col-md-12">
+                <c:if test="${member_groups.size() !=  0}">
                 <div class="panel panel-primary float-e-margins">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h5>Les groupes dont je suis membre</h5>
                     </div>
                     <div class="panel-body">
@@ -149,12 +164,26 @@
                         </table>
                     </div>
                 </div>
+                </c:if>
+                <c:if test="${member_groups.size() ==  0}">
+                    <div class="widget  p-lg text-center">
+                        <div class="m-b-md">
+                            <i class="fa fa-bell-o fa-4x"></i>
+                          
+                            <h3 class="font-bold no-margins">
+                                Vous n'êtes membres d'aucun groupe.
+                            </h3>
+                            <small><a href="<c:url value="/group/index"/>">Rejoignez  un groupe</a></small>
+                        </div>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="row">
+            <c:if test="${invitation_groups.size() !=  0}">
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h5>Mes invitations en attente</h5>
                     </div>
                     <div class="panel-body">
@@ -195,9 +224,11 @@
                     </div>
                 </div>
             </div>
+            </c:if>
+            <c:if test="${subscription_groups.size() !=  0}">
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h5>Mes demandes en attente</h5>
                     </div>
                     <div class="panel-body">
@@ -235,7 +266,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </c:if>
+            </div>
     </jsp:body>
 
 </t:layout>

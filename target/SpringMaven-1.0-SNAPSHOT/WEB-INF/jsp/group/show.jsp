@@ -43,7 +43,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        Détails
+                        <h5>Détails</h5>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal">
@@ -103,6 +103,21 @@
                         </div>
                     </c:if>
 
+                    <c:if test="${group.getMembers().contains(user)}">
+                        <div class="panel-footer text-center">
+                         <button type="submit" class="btn btn-warning btn-xs disabled"> <i class="fa fa-check"></i> Postuler</button>
+                        </div>
+                        </c:if>  
+                    <c:if test="${!group.getMembers().contains(user) and group.getUser().getId() != user.getId()}">
+                        <div class="panel-footer text-center">
+                            <c:url var="url_join" value="/group/join"/>
+                            <form:form action="${url_join}" commandName="group">
+                                <input type="hidden" name="id" value="${group.getId()}"/>
+                                <button type="submit" class="btn btn-warning btn-xs"> <i class="fa fa-check"></i> Postuler</button>
+                            </form:form>
+                        </div>
+                    </c:if>
+
                 </div>
             </div>
 
@@ -111,7 +126,7 @@
                     <form action="<c:url value="/group/invite"/>" method="POST">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center">
-                                Envoyez des invitations
+                                <h5>Envoyez des invitations</h5>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
@@ -133,89 +148,119 @@
                     </form>
                 </div>
 
+                <c:if test="${group.getSubscriptionNumber()+ group.getInvitedNumber() != 0}">                
+                    <div class="col-md-5">
+                        <div class="panel panel-default float-e-margins">
+                            <div class="panel-heading text-center">
+                                <h5>Invitations & Demandes en attente</h5>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Statut</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="user_group" items="${group.getUserGroups()}">
+                                            <c:set var="usr" value="${user_group.getUser()}"/>
+                                            <c:if test="${user_group.getSubscribed()+user_group.getInvited() eq 1}">
+                                                <tr>
+                                                    <td>
+                                                        ${usr.getLogin()}
+                                                    </td>
+                                                    <td>
+                                                        <c:choose>
+                                                            <c:when test="${user_group.getSubscribed() eq 1}">
+                                                                <span class="badge badge-warning">Veut rejoindre</span>
+                                                            </c:when>
+                                                            <c:when test="${user_group.getInvited() eq 1}">
+                                                                <span class="badge badge-warning">Invité</span>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </td>
+                                                    <td>
+                                                        <a href="<c:url value="/user/show/${usr.getId()}"/>" class="btn btn-info btn-xs">
+                                                            <i class="fa fa-eye"></i> Details
+                                                        </a>
+                                                        <br/>
+                                                        <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getSubscribed() eq 1)}">
 
-                <div class="col-md-5">
-                    <div class="panel panel-default float-e-margins">
-                        <div class="panel-heading text-center">
-                            Invitations & Demandes en attente
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Statut</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="user_group" items="${group.getUserGroups()}">
-                                        <c:set var="usr" value="${user_group.getUser()}"/>
-                                        <c:if test="${user_group.getSubscribed()+user_group.getInvited() eq 1}">
-                                            <tr>
-                                                <td>
-                                                    ${usr.getLogin()}
-                                                </td>
-                                                <td>
-                                                    <c:choose>
-                                                        <c:when test="${user_group.getSubscribed() eq 1}">
-                                                            <span class="badge badge-warning">Veut rejoindre</span>
-                                                        </c:when>
-                                                        <c:when test="${user_group.getInvited() eq 1}">
-                                                            <span class="badge badge-warning">Invité</span>
-                                                        </c:when>
-                                                    </c:choose>
-                                                </td>
-                                                <td>
-                                                    <a href="<c:url value="/user/show/${usr.getId()}"/>" class="btn btn-info btn-xs">
-                                                        <i class="fa fa-eye"></i> Details
-                                                    </a>
-                                                    <br/>
-                                                    <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getSubscribed() eq 1)}">
-
-                                                        <a href="<c:url value="/user_group/accept/${group.getId()}/${usr.getId()}"/>" class="btn btn-primary btn-xs">
-                                                            <i class="fa fa-check"></i> Accepter
-                                                        </a>
-                                                        <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
-                                                            <i class="fa fa-ban"></i> Refuser
-                                                        </a>
-                                                    </c:if>
-                                                    <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getInvited() eq 1)}">
-                                                        <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
-                                                            <i class="fa fa-ban"></i> Annuler
-                                                        </a>
-                                                    </c:if>
-                                                    <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getInvited()+user_group.getSubscribed() eq 0) and (user.getId() != user_group.getUser().getId())}">
-                                                        <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
-                                                            <i class="fa fa-ban"></i> Expulser
-                                                        </a>
-                                                    </c:if>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+                                                            <a href="<c:url value="/user_group/accept/${group.getId()}/${usr.getId()}"/>" class="btn btn-primary btn-xs">
+                                                                <i class="fa fa-check"></i> Accepter
+                                                            </a>
+                                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-ban"></i> Refuser
+                                                            </a>
+                                                        </c:if>
+                                                        <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getInvited() eq 1)}">
+                                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-ban"></i> Annuler
+                                                            </a>
+                                                        </c:if>
+                                                        <c:if test="${(group.getUser().getId() eq user.getId()) and (user_group.getInvited()+user_group.getSubscribed() eq 0) and (user.getId() != user_group.getUser().getId())}">
+                                                            <a href="<c:url value="/user_group/discard/${group.getId()}/${usr.getId()}"/>" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-ban"></i> Expulser
+                                                            </a>
+                                                        </c:if>
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
+                <c:if test="${group.getSubscriptionNumber()+ group.getInvitedNumber() == 0}">
+                    <div class="widget  p-lg text-center">
+                        <div class="m-b-md">
+                            <i class="fa fa-info fa-4x"></i>
+                            <h1 class="m-xs"></h1>
+                            <h3 class="font-bold no-margins">
+                                Aucune invitation et demande.
+                            </h3>
+                        </div>
+                    </div>
+                </c:if>
             </c:if>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default float-e-margins">
-                    <div class="panel-heading text-center">
+                <div class="ibox  panel-default float-e-margins">
+                    <div class="ibox-title text-center">
                         Historique
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="panel-body" id="ibox-content">
+                    <div class="panel-body ibox-content">
 
                         <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
-                            <c:forEach var="user_group" items="${group.getUserGroups()}">
+                            <c:forEach var="user_group" items="${group.getUserGroupsList()}">
                                 <c:set var="usr" value="${user_group.getUser()}"/>
                                 <c:if test="${user_group.getSubscribed()+user_group.getInvited() eq 0}">
                                     <div class="vertical-timeline-block">
                                         <div class="vertical-timeline-icon navy-bg">
-                                            <i class="fa fa-briefcase"></i>
+
+                                            <c:choose>
+                                                <c:when test="${group.getUser().getId() eq usr.getId()}">
+                                                    <i class="fa fa-smile-o"></i>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <i class="fa fa-user-plus"></i>
+                                                </c:otherwise>
+
+                                            </c:choose>
                                         </div>
 
                                         <div class="vertical-timeline-content">
@@ -229,7 +274,7 @@
                                                     <h2>
                                                         ${usr.getLogin()}
                                                     </h2>
-                                                    <p>A join le groupe !</p>
+                                                    <p>A joint le groupe !</p>
                                                 </c:otherwise>
 
                                             </c:choose>

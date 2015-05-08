@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -138,6 +136,7 @@ public class UserController {
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
     public ModelAndView postCreate(RedirectAttributes redirectAttr, @Valid @ModelAttribute("user") User user, BindingResult result) {
         ModelAndView mv = new ModelAndView("/user/create");
+        System.out.println(user.getLocation().getLabel());
         if (result.hasErrors()) {
             return mv;
         } else if (this.userService.getUserByName(user.getLogin()) == null) {
@@ -187,7 +186,12 @@ public class UserController {
     @RequestMapping(value="/user/show/{id}", method=RequestMethod.GET)
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/user/show");
-        User user = this.userService.getUserById(id);
+        User user = SessionUtil.getSessionUser(request);
+        if (user == null) {
+            mv = new ModelAndView("redirect:/user/login");
+            return mv;
+        }
+        user = this.userService.getUserById(id);
         mv.addObject("usr", user);
         return mv;
     }

@@ -3,6 +3,7 @@ package com.nephtysorg.model.pojo;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -67,8 +68,16 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Set getUserGroups() {
+    
+    public Set<UserGroup> getUserGroups() {
         return this.userGroups;
+    }
+    
+    @Transient
+    public List getUserGroupsList() {
+        List<UserGroup> tmp = new ArrayList<>(this.userGroups);
+        Collections.sort(tmp,Collections.reverseOrder());
+        return tmp;
     }
     
     public void setUserGroups(Set userGroups) {
@@ -77,32 +86,19 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
     
     @Transient
     public int getSubscriptionNumber() {
-        int result = 0;
-        Set<UserGroup> temp;
-        temp = new HashSet<>(this.userGroups);
         
-        for(UserGroup tmp : temp){
-            if(tmp.getSubscribed() == (byte)1){
-                result ++;
-            }
-        }
-        temp.clear();
-        return result;
+        return this.getSubscribers().size();
     }
     
     @Transient
     public int getMembersNumber() {
-        int result = 0;
-        Set<UserGroup> temp;
-        temp = new HashSet<>(this.userGroups);
         
-        for(UserGroup tmp : temp){
-            if(tmp.getSubscribed()+tmp.getInvited()== (byte)0){
-                result ++;
-            }
-        }
-        temp.clear();
-        return result;
+        return this.getMembers().size();
+    }
+    
+    @Transient
+    public int getInvitedNumber() {
+        return this.getInvited().size();
     }
 
         
@@ -113,7 +109,21 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         temp = new HashSet<>(this.userGroups);
         
         for(UserGroup tmp : temp){
-            if(tmp.getSubscribed()+tmp.getInvited()== (byte)0 && this.user!=tmp.getUser()){
+            if(tmp.getSubscribed()+tmp.getInvited()== (byte)0 && this.user.getId()!=tmp.getUser().getId()){
+                result.add(tmp.getUser());
+            }
+        }
+        return result;
+    }
+    
+    @Transient
+    public List<User> getInvited() {
+        Set<UserGroup> temp;
+        List<User> result = new ArrayList<>();
+        temp = new HashSet<>(this.userGroups);
+        
+        for(UserGroup tmp : temp){
+            if(tmp.getInvited()== (byte)1){
                 result.add(tmp.getUser());
             }
         }

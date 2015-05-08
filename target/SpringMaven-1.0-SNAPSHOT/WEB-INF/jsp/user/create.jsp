@@ -50,15 +50,36 @@
                 </c:if>
                 <form:form action="create" commandName="user" cssClass="m-t">
                     <div class="form-group">
-                        <form:input path="login" cssClass="form-control" placeholder="Login"/>
+                        <div class="input-group">
+                            <form:input path="login" cssClass="form-control" placeholder="Login"/>
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Le login est une chaine de 5 à 20 carractères." data-original-title="" title="Aide">
+                                    <i class="fa fa-question"></i>
+                                </button>
+                            </div>
+                        </div>
                         <form:errors path="login" cssClass="text-danger"/>
                     </div>
                     <div class="form-group">
-                        <form:password  path="password" cssClass="form-control" placeholder="Password"/>
+                        <div class="input-group">
+                            <form:password  path="password" cssClass="form-control" placeholder="Password"/>
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Le mot de passe est une chaine de 5 à 20 carractères." data-original-title="" title="Aide">
+                                    <i class="fa fa-question"></i>
+                                </button>
+                            </div>
+                        </div>
                         <form:errors path="password" cssClass="text-danger"/>
                     </div>
                     <div class="form-group">
-                        <form:input id="location" path="location.label" cssClass="form-control" placeholder="Localisation" />
+                        <div class="input-group">
+                            <form:input id="location" path="location.label" cssClass="form-control" placeholder="Localisation" />
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="La localication est une chaine de 3 à 20 carractères." data-original-title="" title="Aide">
+                                    <i class="fa fa-question"></i>
+                                </button>
+                            </div>
+                        </div>
                         <form:errors path="location.label" cssClass="text-danger"/>
                     </div>
                     <button type="submit" class="btn btn-primary block full-width m-b">Valider</button>
@@ -71,23 +92,26 @@
         </div>
 
         <!-- Mainly scripts -->
-        <script src="<c:url value="/assets/js/jquery-2.1.1.js"/>"></script>
+         <script src="<c:url value="/assets/js/jquery-2.1.1.js"/>"></script>
         <script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
-         <script src="<c:url value="/assets/js/jquery-ui-1.10.4.min.js"/>"></script>
-        
-      <script>
-$(document).ready(function() {
-var dataSource = [
-<c:forEach items="${locations}" var="loc">
-        "${loc}",
-</c:forEach>
-    ];
-	$('#location').autocomplete({
-                source: dataSource
-	 });
- 
-  });
-  </script>
+        <script src="<c:url value="/assets/js/plugins/metisMenu/jquery.metisMenu.js"/>"></script>
+        <script src="<c:url value="/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"/>"></script>
+        <script src="<c:url value="/assets/js/inspinia.js"/>"></script>
+        <script src="<c:url value="/assets/js/plugins/pace/pace.min.js"/>"></script>
+
+        <script>
+            $(document).ready(function () {
+                var dataSource = [
+            <c:forEach items="${locations}" var="loc">
+                    "${loc}",
+            </c:forEach>
+                ];
+                $('#location').autocomplete({
+                    source: dataSource
+                });
+
+            });
+        </script>
 
 
 
