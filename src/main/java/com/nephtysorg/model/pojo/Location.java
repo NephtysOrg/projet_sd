@@ -13,7 +13,7 @@ public class Location  implements java.io.Serializable {
 
 
      private Integer id;
-     @Size(min=3, max=20)
+     //@Size(min=3, max=20)
      private String label;
      private Set users = new HashSet(0);
 

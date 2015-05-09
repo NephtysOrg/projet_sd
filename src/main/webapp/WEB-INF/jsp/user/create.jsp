@@ -51,7 +51,7 @@
                 <form:form action="create" commandName="user" cssClass="m-t">
                     <div class="form-group">
                         <div class="input-group">
-                            <form:input path="login" cssClass="form-control" placeholder="Login"/>
+                            <form:input path="login" cssClass="form-control" placeholder="Login*"/>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Le login est une chaine de 5 à 20 carractères." data-original-title="" title="Aide">
                                     <i class="fa fa-question"></i>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <form:password  path="password" cssClass="form-control" placeholder="Mot de passe"/>
+                            <form:password  path="password" cssClass="form-control" placeholder="Mot de passe*"/>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Le mot de passe est une chaine de 5 à 20 carractères." data-original-title="" title="Aide">
                                     <i class="fa fa-question"></i>

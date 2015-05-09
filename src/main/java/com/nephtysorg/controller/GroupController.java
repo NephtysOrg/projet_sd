@@ -104,7 +104,7 @@ public class GroupController {
         }
         System.out.println(group);
         this.groupService.subscribe(user, group);
-        redirectAttributes.addFlashAttribute("callout", new Callout("success", "Féllicitation", "Votre demandé d'ajout au groupe à été envoyée."));
+        redirectAttributes.addFlashAttribute("callout", new Callout("success", "Féllicitation", "La demande a été envoyée."));
         return mv;
     }
 
@@ -146,7 +146,7 @@ public class GroupController {
                 group.setUser((User) SessionUtil.getSessionUser(request));
                 this.groupService.updateGroup(group);
                 mv = new ModelAndView("redirect:/home");
-                redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le groupe " + group.getName() + " a été mis a jour."));
+                redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le groupe <i>" + group.getName() + "</i> a été mis a jour."));
             }
         }
         return mv;
@@ -184,7 +184,7 @@ public class GroupController {
         }
         
         if(allRequestParams.size() > 1){
-            redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Les "+allRequestParams.size()+" invitations ont été envoyées"));
+            redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Les <i>"+allRequestParams.size()+"</i> invitations ont été envoyées"));
         }
         if(allRequestParams.size() == 1){
              redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "L'invitation a été envoyée"));

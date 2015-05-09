@@ -24,7 +24,7 @@
                 <c:if test="${groups.size() !=  0}">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading text-center">
-                        <h3>Mes groupes</h3>
+                        <h3>Vos groupes</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -171,7 +171,7 @@
                             <i class="fa fa-bell-o fa-4x"></i>
                           
                             <h3 class="font-bold no-margins">
-                                Vous n'êtes membres d'aucun groupe.
+                                Vous n'êtes membre d'aucun groupe.
                             </h3>
                             <small><a href="<c:url value="/group/index"/>">Rejoignez  un groupe</a></small>
                         </div>
@@ -184,7 +184,7 @@
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
                     <div class="panel-heading text-center">
-                        <h3>Mes invitations en attente</h3>
+                        <h3>Vos invitations en attente</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -229,7 +229,7 @@
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
                     <div class="panel-heading text-center">
-                        <h3>Mes demandes en attente</h3>
+                        <h3>Vos demandes en attente</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >

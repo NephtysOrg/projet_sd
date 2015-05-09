@@ -112,7 +112,7 @@
                                 </c:when>
                             </c:choose>
                             <b><c:out value="${callout.getTitle()}"/>. </b>
-                            <c:out value="${callout.getContent()}"/>
+                            ${callout.getContent()}
                         </div>
                     </c:if>
 

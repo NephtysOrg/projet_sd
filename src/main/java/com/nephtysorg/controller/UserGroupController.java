@@ -53,9 +53,9 @@ public class UserGroupController {
                 // je dois etre administrateur.
                 if (group.getUser().getId().equals(user.getId())) {
                     this.groupService.discard(target_user, group);
-                    redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le lien de " + target_user.getLogin() + " au groupe " + group.getName() + " à été supprimé."));
+                    redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le lien de <i>" + target_user.getLogin() + "</i> avec le groupe <i>" + group.getName() + "</i> à été supprimé."));
                 } else {
-                    redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Erreur", "Vous n'êtes pas administrateur de " + group.getName() + "."));
+                    redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Erreur", "Vous n'êtes pas administrateur de <i>" + group.getName() + "</i>."));
                 }
             }
 
@@ -63,9 +63,9 @@ public class UserGroupController {
             if (target_user.getId().equals(user.getId())) {
                 if (!group.getUser().getId().equals(user.getId())) {
                     this.groupService.discard(target_user, group);
-                    redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le lien de " + target_user.getLogin() + " au groupe " + group.getName() + " à été supprimé."));
+                    redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le lien de <i>" + target_user.getLogin() + "</i> avec le groupe <i>" + group.getName() + "</i> à été supprimé."));
                 } else {
-                    redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Erreur", "Vous êtes administrateur de " + group.getName() + ", vous ne pouvez le quitter."));
+                    redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Erreur", "Vous êtes administrateur de <i>" + group.getName() + "</i>, vous ne pouvez le quitter."));
                 }
             }
             String referer = request.getHeader("Referer");
@@ -85,7 +85,7 @@ public class UserGroupController {
         } else {
             user = this.userService.getUserById(id_user);
             this.groupService.accept(user, group);
-            redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "L'utilisateur " + user.getLogin() + " à été accepté dans le groupe " + group.getName() + "."));
+            redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "L'utilisateur <i>" + user.getLogin() + "</i> à été accepté dans le groupe <i>" + group.getName() + "</i>."));
             String referer = request.getHeader("Referer");
             mv = new ModelAndView("redirect:"+ referer);
             return mv;
