@@ -29,6 +29,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
+                <c:url var="post_url"  value="${$group.getId()}" />
                 <form:form action="${post_url}" commandName="group">
                     <div class="panel panel-default float-e-margins">
                         <div class="panel-heading text-center">
@@ -36,7 +37,7 @@
                             <small>Veuillez remplir les informations</small>
                         </div>
                         <div class="panel-body">
-                            <c:url var="post_url"  value="${$group.getId()}" />
+                            
 
                             <div class="form-group">
                                 <label>Nom</label>

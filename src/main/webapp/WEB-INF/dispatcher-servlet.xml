@@ -10,21 +10,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    
-    
-    
-
- 
-
     <tx:annotation-driven />
-    
     <bean id="transactionManager"
         class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    
-    
     <context:component-scan base-package="com.nephtysorg"/>
     <bean class="com.nephtysorg.controller.UserController" id="userController"/>
     <bean class="com.nephtysorg.controller.GroupController" id="groupController"/>

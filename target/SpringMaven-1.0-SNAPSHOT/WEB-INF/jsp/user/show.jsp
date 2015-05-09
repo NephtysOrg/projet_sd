@@ -26,7 +26,7 @@
                     <div class="panel-footer text-center">
                         <c:if test="${usr.getId() eq user.getId()}">
                             <c:url var="edit_url" value="/user/edit/${user.getId()}"/>
-                            <a href="${edit_url}" class="btn btn-warning btn-xs">Editer</a>
+                            <a href="${edit_url}" class="btn btn-warning btn-xs disabled">Editer</a>
                         </c:if>
                     </div>
                 </div>

@@ -89,7 +89,7 @@ public class UserController {
         }
         if (userService.exist(user)) {
             user = userService.getUserByName(user.getLogin());
-            
+
             session.setAttribute("user", user);
             mv = new ModelAndView("redirect:/home");
         } else {
@@ -99,9 +99,9 @@ public class UserController {
 
         return mv;
     }
-    
+
     @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
-    public ModelAndView getLogOut(HttpServletRequest request){
+    public ModelAndView getLogOut(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
         return new ModelAndView("redirect:/user/login");
@@ -124,8 +124,6 @@ public class UserController {
         model.addAttribute(new User());
         return mv;
     }
-    
-   
 
     /**
      *
@@ -164,26 +162,25 @@ public class UserController {
         } else {
             mv = new ModelAndView("/home");
             user = this.userService.getUserById(user.getId());
-            
+
             Set<Group> groups = user.getGroups();
             mv.addObject("groups", groups);
-            
+
             List<Group> member_groups = this.userService.getMemberGroups(user);
             mv.addObject("member_groups", member_groups);
-            
+
             List<Group> invitation_groups = this.userService.getInvitationGroups(user);
             mv.addObject("invitation_groups", invitation_groups);
-            
+
             List<Group> subscription_groups = this.userService.getSubscriptionGroups(user);
             mv.addObject("subscription_groups", subscription_groups);
-            
+
         }
 
         return mv;
     }
-    
-    
-    @RequestMapping(value="/user/show/{id}", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/user/show/{id}", method = RequestMethod.GET)
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/user/show");
         User user = SessionUtil.getSessionUser(request);
@@ -195,4 +192,51 @@ public class UserController {
         mv.addObject("usr", user);
         return mv;
     }
+
+//    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.GET)
+//    public ModelAndView getEdit(@PathVariable Integer id, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+//        ModelAndView mv = new ModelAndView("/user/edit");
+//        User usr = this.userService.getUserById(id);
+//        User user = SessionUtil.getSessionUser(request);
+//
+//        if (user == null) {
+//            mv = new ModelAndView("redirect:/user/login");
+//            return mv;
+//        }
+//        if(!user.getId().equals(usr.getId())){
+//             mv = new ModelAndView("redirect:/home");
+//             redirectAttributes.addFlashAttribute("callout", new Callout("danger", "Attention", "Vous n'avez pas le droit d'étider cet utilisateur"));
+//        }else{
+//            user =  this.userService.getUserById(id);
+//            model.addAttribute("usr",usr);
+//            mv.addObject("usr", user);
+//            List<Location> locationList = this.userService.listLocations();
+//            List<String> stringList = new ArrayList<>();
+//            for (Location tmp : locationList) {
+//                stringList.add(tmp.getLabel());
+//            }
+//            mv.addObject("locations", stringList);
+//        }
+//        return mv;
+//    }
+//    
+//    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
+//    public ModelAndView postEdit(@Valid @ModelAttribute("usr") User usr, BindingResult result, HttpServletRequest request,RedirectAttributes redirectAttributes, @PathVariable Integer id) {
+//        User old_user = this.userService.getUserById(id);
+//        if(result.hasErrors()){
+//            ModelAndView mv = new ModelAndView("/user/edit");
+//            return mv;
+//        }
+//        
+//        if (!usr.getLogin().equals(old_user.getLogin()) && (this.userService.getUserByName(usr.getLogin()) != null)){
+//            ModelAndView mv = new ModelAndView("/user/edit");
+//            mv.addObject("callout", new Callout("warning", "Attention", "Le nouveau nom est déja pris."));
+//            return mv;
+//        }else{
+//             this.userService.updateUser(usr);
+//             ModelAndView mv = new ModelAndView("redirect:/user/show/"+id);
+//             redirectAttributes.addFlashAttribute("callout", new Callout("success", "Fellicitation", "Le profil a été mis à jour"));
+//             return mv;
+//        }
+//    }
 }

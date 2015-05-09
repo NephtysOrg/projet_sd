@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <form:password  path="password" cssClass="form-control" placeholder="Password"/>
+                            <form:password  path="password" cssClass="form-control" placeholder="Mot de passe"/>
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Le mot de passe est une chaine de 5 à 20 carractères." data-original-title="" title="Aide">
                                     <i class="fa fa-question"></i>

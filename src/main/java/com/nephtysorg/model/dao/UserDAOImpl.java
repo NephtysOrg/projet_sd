@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void updateUser(User user) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(user);
+        session.merge(user);
     }
 
     @Transactional

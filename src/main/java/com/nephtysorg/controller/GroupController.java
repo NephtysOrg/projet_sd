@@ -136,7 +136,6 @@ public class GroupController {
 
         if (result.hasErrors()) {
             mv = new ModelAndView("/group/edit");
-            mv.addObject("callout", new Callout("warning", "Attention", "Le nouveau nom est déja pris."));
         } else {
             Group old_group = this.groupService.getGroupById(id);
             // L'utilistateur a utilisé un nouveau nom et il est déja pris
