@@ -16,7 +16,7 @@
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h5>Questions fréquentes</h5>
+                        <h3>Questions fréquentes</h3>
                     </div>
                     <div class="panel-body">
                         <div class="wrapper wrapper-content animated fadeInRight">
@@ -54,7 +54,8 @@
                                                 <p>
                                                     Cliquez sur <b><i class="fa fa-coffee"></i> Groupes</b>
                                                     puis sur <b>Voir les groupes</b>, enfin sur
-                                                    <button type="submit" class="btn btn-warning btn-xs"> <i class="fa fa-check"></i> Postuler</button> sur le groupe voulu.
+                                                    <button type="submit" class="btn btn-warning btn-xs"> <i class="fa fa-check"></i> Postuler</button> sur le groupe voulu.<br>
+                                                    Vous pouvez aussi postuler depuis la page détail d'un groupe.
                                                 </p>
                                             </div>
                                         </div>
@@ -109,7 +110,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h5>Plan du site</h5>
+                        <h3>Plan du site</h3>
                     </div>
                     <div class="panel-body">
                         <ul>

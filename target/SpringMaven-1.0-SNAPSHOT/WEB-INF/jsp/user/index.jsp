@@ -15,7 +15,7 @@
             <div class="row">
                 <c:forEach var="user" items="${users}">
                     <a href="<c:url value="/user/show/${user.getId()}"/>">
-                        <div class="col-lg-4">
+                        <div class="col-sm-4">
                             <div class="widget-head-color-box navy-bg p-lg text-center">
                                 <div class="m-b-md">
                                     <h2 class="font-bold no-margins">

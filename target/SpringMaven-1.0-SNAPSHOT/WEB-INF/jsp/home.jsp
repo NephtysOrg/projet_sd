@@ -24,7 +24,7 @@
                 <c:if test="${groups.size() !=  0}">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading text-center">
-                        <h5>Mes groupes</h5>
+                        <h3>Mes groupes</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -106,7 +106,7 @@
                 <c:if test="${member_groups.size() !=  0}">
                 <div class="panel panel-primary float-e-margins">
                     <div class="panel-heading text-center">
-                        <h5>Les groupes dont je suis membre</h5>
+                        <h3>Les groupes dont je suis membre</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -184,7 +184,7 @@
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
                     <div class="panel-heading text-center">
-                        <h5>Mes invitations en attente</h5>
+                        <h3>Mes invitations en attente</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >
@@ -229,7 +229,7 @@
             <div class="col-md-6">
                 <div class="panel panel-green float-e-margins">
                     <div class="panel-heading text-center">
-                        <h5>Mes demandes en attente</h5>
+                        <h3>Mes demandes en attente</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" >

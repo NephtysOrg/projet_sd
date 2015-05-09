@@ -32,7 +32,7 @@
                 <form:form action="${post_url}" commandName="group">
                     <div class="panel panel-default float-e-margins">
                         <div class="panel-heading text-center">
-                            <h5>Edition</h5>
+                            <h3>Edition</h3>
                             <small>Veuillez remplir les informations</small>
                         </div>
                         <div class="panel-body">

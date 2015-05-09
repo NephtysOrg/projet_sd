@@ -15,7 +15,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h5>Détails</h5>
+                        <h4>Détails</h4>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal">
@@ -36,7 +36,7 @@
                 <c:if test="${usr.getMemberGroup().size() + usr.getGroups().size() != 0}">
                     <div class="panel panel-default float-e-margins">
                         <div class="panel-heading text-center">
-                            <h5>Les groupes</h5>
+                            <h3>Les groupes</h3>
                         </div>
                         <div class="panel-body">
 

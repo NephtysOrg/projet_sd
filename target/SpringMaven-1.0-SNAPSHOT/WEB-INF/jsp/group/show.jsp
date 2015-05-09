@@ -43,7 +43,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h5>Détails</h5>
+                        <h3>Détails</h3>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal">
@@ -126,7 +126,7 @@
                     <form action="<c:url value="/group/invite"/>" method="POST">
                         <div class="panel panel-default">
                             <div class="panel-heading text-center">
-                                <h5>Envoyez des invitations</h5>
+                                <h3>Envoyez des invitations</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
@@ -152,7 +152,7 @@
                     <div class="col-md-5">
                         <div class="panel panel-default float-e-margins">
                             <div class="panel-heading text-center">
-                                <h5>Invitations & Demandes en attente</h5>
+                                <h3>Invitations & Demandes en attente</h3>
                             </div>
                             <div class="panel-body">
                                 <table class="table table-striped table-bordered table-hover">

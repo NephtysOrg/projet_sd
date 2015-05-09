@@ -25,9 +25,9 @@
                 <c:if test="${groups.size()!= 0}">
                     <div class="panel panel-default float-e-margins">
                         <div class="panel-heading text-center">
-                            <h5>Tous les groupes <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Tapez 'postuler' pour voir les groupes auquels vous pouvez postuler ou 'editer' pour voir vos groupes." data-original-title="" title="Aide">
+                            <h3>Tous les groupes <button type="button" class="btn btn-xs btn-link text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Tapez 'postuler' pour voir les groupes auquels vous pouvez postuler ou 'editer' pour voir vos groupes." data-original-title="" title="Aide">
                                     <i class="fa fa-question"></i>
-                                </button></h5>
+                                </button></h3>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped table-bordered table-hover datatable" >

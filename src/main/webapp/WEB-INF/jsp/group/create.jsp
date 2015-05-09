@@ -32,7 +32,7 @@
                 <form:form action="create"  commandName="group">
                     <div class="panel panel-default float-e-margins">
                         <div class="panel-heading text-center">
-                            <h5>Création</h5><small>Veuillez remplir les informations</small>
+                            <h3>Création</h3><small>Veuillez remplir les informations</small>
                             
 
                         </div>
