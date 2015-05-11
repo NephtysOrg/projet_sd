@@ -5,7 +5,6 @@ package com.nephtysorg.model.pojo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
@@ -27,15 +26,32 @@ public class User  implements java.io.Serializable, java.lang.Comparable {
      private Set groups = new HashSet(0);
      private Set userGroups = new HashSet(0);
 
+    /**
+     *
+     */
     public User() {
     }
 
-	
+    /**
+     *
+     * @param location
+     * @param login
+     * @param password
+     */
     public User(Location location, String login, String password) {
         this.location = location;
         this.login = login;
         this.password = password;
     }
+
+    /**
+     *
+     * @param location
+     * @param login
+     * @param password
+     * @param groups
+     * @param userGroups
+     */
     public User(Location location, String login, String password, Set groups, Set userGroups) {
        this.location = location;
        this.login = login;
@@ -44,39 +60,82 @@ public class User  implements java.io.Serializable, java.lang.Comparable {
        this.userGroups = userGroups;
     }
    
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Location getLocation() {
         return this.location;
     }
     
+    /**
+     *
+     * @param location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getLogin() {
         return this.login;
     }
     
+    /**
+     *
+     * @param login
+     */
     public void setLogin(String login) {
         this.login = login;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return this.password;
     }
     
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public Set getGroups() {
         return this.groups;
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public List<Group> getMemberGroup (){
         Set<UserGroup> temp;
@@ -91,17 +150,35 @@ public class User  implements java.io.Serializable, java.lang.Comparable {
         return result;
     }
     
+    /**
+     *
+     * @param groups
+     */
     public void setGroups(Set groups) {
         this.groups = groups;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getUserGroups() {
         return this.userGroups;
     }
     
+    /**
+     *
+     * @param userGroups
+     */
     public void setUserGroups(Set userGroups) {
         this.userGroups = userGroups;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object)
     {
@@ -115,6 +192,11 @@ public class User  implements java.io.Serializable, java.lang.Comparable {
         return sameSame;
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     */
     @Override
     public int compareTo(Object t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

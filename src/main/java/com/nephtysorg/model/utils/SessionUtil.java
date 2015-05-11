@@ -15,6 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @author cfollet
  */
 public class SessionUtil {
+
+    /**
+     *
+     * @param request
+     * @return
+     */
     public static User getSessionUser (HttpServletRequest request){
         HttpSession session = request.getSession();
         return (User) session.getAttribute("user");

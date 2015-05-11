@@ -13,11 +13,49 @@ import com.nephtysorg.model.pojo.Location;
  * @author cfollet
  */
 public interface LocationDAO {
+
+    /**
+     *
+     * @param location
+     */
     public  void addLocation(Location location);
+
+    /**
+     *
+     * @param location
+     */
     public void updateLocation(Location location);
+
+    /**
+     *
+     * @return
+     */
     public List<Location> listLocations();
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Location getLocationById(int id);
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Location getLocationByName(String name);
+
+    /**
+     *
+     * @param id
+     */
     public void removeLocation(int id);
+
+    /**
+     *
+     * @param location
+     * @return
+     */
     public boolean exist(Location location);
 }

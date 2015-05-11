@@ -14,9 +14,35 @@ import com.nephtysorg.model.pojo.UserGroupId;
  * @author cfollet
  */
 public interface UserGroupDAO {
+
+    /**
+     *
+     * @param userGroup
+     */
     public  void addUserGroup(UserGroup userGroup);
+
+    /**
+     *
+     * @param userGroup
+     */
     public void updateUserGroup(UserGroup userGroup);
+
+    /**
+     *
+     * @return
+     */
     public List<UserGroup> listUserGroups();
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public UserGroup getUserGroupById(UserGroupId id);
+
+    /**
+     *
+     * @param id
+     */
     public void removeUserGroup(UserGroupId id);
 }

@@ -18,7 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
- 
+/**
+ *
+ * @author cfollet
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -30,6 +33,10 @@ public class UserServiceImpl implements UserService {
      @Autowired
     private UserGroupDAO userGroupDAO;
     
+    /**
+     *
+     * @param user
+     */
     @Override
     @Transactional
     public void addUser(User user) {
@@ -41,43 +48,74 @@ public class UserServiceImpl implements UserService {
         userDAO.addUser(user);
     }
 
+    /**
+     *
+     * @param user
+     */
     @Override
     @Transactional
     public void updateUser(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     @Transactional
     public List<User> listUsers() {
         return this.userDAO.listUsers();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     @Transactional
     public User getUserById(int id) {
         return this.userDAO.getUserById(id);
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Override
     @Transactional
     public User getUserByName(String name) {
         return this.userDAO.getUserByName(name);
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     @Transactional
     public void removeUser(int id) {
         this.userDAO.removeUser(id);
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Override
     @Transactional
     public boolean exist(User user) {
         return this.userDAO.exist(user);
     }
 
-
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Override
     public List<Group> getInvitationGroups(User user) {
         List <UserGroup> listUserGroup = this.userGroupDAO.listUserGroups();
@@ -90,6 +128,11 @@ public class UserServiceImpl implements UserService {
         return groups;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Override
     public List<Group> getSubscriptionGroups(User user) {
         List <UserGroup> listUserGroup = this.userGroupDAO.listUserGroups();
@@ -102,6 +145,11 @@ public class UserServiceImpl implements UserService {
         return groups;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Override
     public List<Group> getMemberGroups(User user) {
         List <UserGroup> listUserGroup = this.userGroupDAO.listUserGroups();
@@ -114,6 +162,10 @@ public class UserServiceImpl implements UserService {
         return groups;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Location> listLocations() {
         return this.locationDAO.listLocations();

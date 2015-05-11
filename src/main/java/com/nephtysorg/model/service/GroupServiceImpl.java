@@ -30,6 +30,10 @@ public class GroupServiceImpl implements GroupService {
     @Autowired
     private UserGroupDAO userGroupDAO;
      
+    /**
+     *
+     * @param group
+     */
     @Override
     @Transactional
     public void addGroup(Group group) {
@@ -47,42 +51,74 @@ public class GroupServiceImpl implements GroupService {
         userGroupDAO.addUserGroup(ug);
     }
 
+    /**
+     *
+     * @param group
+     */
     @Override
     @Transactional
     public void updateGroup(Group group) {
         groupDAO.updateGroup(group);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     @Transactional
     public List<Group> listGroups() {
         return groupDAO.listGroups();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     @Transactional
     public Group getGroupById(int id) {
         return groupDAO.getGroupById(id);
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Override
     @Transactional
     public Group getGroupByName(String name) {
         return groupDAO.getGroupByName(name);
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     @Transactional
     public void removeGroup(int id) {
         groupDAO.removeGroup(id);
     }
 
+    /**
+     *
+     * @param group
+     * @return
+     */
     @Override
     @Transactional
     public boolean exist(Group group) {
         return groupDAO.exist(group);
     }
 
+    /**
+     *
+     * @param user
+     * @param group
+     */
     @Override
     @Transactional
     public void invite(User user, Group group) {
@@ -108,7 +144,11 @@ public class GroupServiceImpl implements GroupService {
         
     }
 
-
+    /**
+     *
+     * @param user
+     * @param group
+     */
     @Override
     @Transactional
     public void accept(User user, Group group) {
@@ -120,6 +160,11 @@ public class GroupServiceImpl implements GroupService {
         this.userGroupDAO.updateUserGroup(ug);
     }
 
+    /**
+     *
+     * @param user
+     * @param group
+     */
     @Override
     @Transactional
     public void subscribe(User user, Group group) {
@@ -144,6 +189,11 @@ public class GroupServiceImpl implements GroupService {
             }
     }
 
+    /**
+     *
+     * @param user
+     * @param group
+     */
     @Override
     @Transactional
     public void discard(User user, Group group) {

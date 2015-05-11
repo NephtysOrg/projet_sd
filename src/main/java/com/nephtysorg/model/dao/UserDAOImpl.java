@@ -20,10 +20,18 @@ public class UserDAOImpl implements UserDAO {
 
     private SessionFactory sessionFactory;
  
+    /**
+     *
+     * @param sessionFactory
+     */
     public UserDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
     
+    /**
+     *
+     * @param user
+     */
     @Transactional
     @Override
     public void addUser(User user) {
@@ -31,6 +39,10 @@ public class UserDAOImpl implements UserDAO {
         session.persist(user);
     }
 
+    /**
+     *
+     * @param user
+     */
     @Transactional
     @Override
     public void updateUser(User user) {
@@ -38,6 +50,10 @@ public class UserDAOImpl implements UserDAO {
         session.merge(user);
     }
 
+    /**
+     *
+     * @return
+     */
     @Transactional
     @Override
     public List<User> listUsers() {
@@ -46,6 +62,11 @@ public class UserDAOImpl implements UserDAO {
         return userList;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Transactional
     @Override
     public User getUserById(int id) {
@@ -54,6 +75,11 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Transactional
     @Override
     public User getUserByName(String name) {
@@ -64,6 +90,10 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    /**
+     *
+     * @param id
+     */
     @Transactional
     @Override
     public void removeUser(int id) {
@@ -74,6 +104,11 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     @Transactional
     @Override
     public boolean exist(User user) {

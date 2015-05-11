@@ -42,7 +42,7 @@ public class UserController {
 
     /**
      *
-     * @param hsr
+     * @param request
      * @param hsr1
      * @return
      */
@@ -100,6 +100,11 @@ public class UserController {
         return mv;
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
     public ModelAndView getLogOut(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -127,6 +132,7 @@ public class UserController {
 
     /**
      *
+     * @param redirectAttr
      * @param user
      * @param result
      * @return
@@ -180,6 +186,12 @@ public class UserController {
         return mv;
     }
 
+    /**
+     *
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/user/show/{id}", method = RequestMethod.GET)
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/user/show");

@@ -17,36 +17,74 @@ public class Location  implements java.io.Serializable {
      private String label;
      private Set users = new HashSet(0);
 
+    /**
+     *
+     */
     public Location() {
     }
 
-	
+    /**
+     *
+     * @param label
+     */
     public Location(String label) {
         this.label = label;
     }
+
+    /**
+     *
+     * @param label
+     * @param users
+     */
     public Location(String label, Set users) {
        this.label = label;
        this.users = users;
     }
    
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getLabel() {
         return this.label;
     }
     
+    /**
+     *
+     * @param label
+     */
     public void setLabel(String label) {
         this.label = label;
     }
+
+    /**
+     *
+     * @return
+     */
     public Set getUsers() {
         return this.users;
     }
     
+    /**
+     *
+     * @param users
+     */
     public void setUsers(Set users) {
         this.users = users;
     }

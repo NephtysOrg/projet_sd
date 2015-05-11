@@ -13,11 +13,49 @@ import com.nephtysorg.model.pojo.Group;
  * @author cfollet
  */
 public interface GroupDAO {
+
+    /**
+     *
+     * @param group
+     */
     public  void addGroup(Group group);
+
+    /**
+     *
+     * @param group
+     */
     public void updateGroup(Group group);
+
+    /**
+     *
+     * @return
+     */
     public List<Group> listGroups();
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Group getGroupById(int id);
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Group getGroupByName(String name);
+
+    /**
+     *
+     * @param id
+     */
     public void removeGroup(int id);
+
+    /**
+     *
+     * @param group
+     * @return
+     */
     public boolean exist(Group group);  // Optionnal
 }

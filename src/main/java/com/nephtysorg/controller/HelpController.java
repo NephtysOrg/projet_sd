@@ -18,6 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelpController {
     
+    /**
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/help/index", method = RequestMethod.GET)
     public ModelAndView getIndex(HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("/help/index");

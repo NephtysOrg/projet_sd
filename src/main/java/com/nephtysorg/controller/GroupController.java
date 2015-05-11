@@ -34,27 +34,36 @@ public class GroupController {
     @Autowired
     private UserService userService;
 
+    /**
+     *
+     * @param request
+     * @param hsr1
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/group/index", method = RequestMethod.GET)
-    public ModelAndView getIndex(HttpServletRequest request, HttpServletResponse hsr1, Model model) throws Exception {
+    public ModelAndView getIndex(HttpServletRequest request, HttpServletResponse hsr1, Model model){
         ModelAndView mv = new ModelAndView("/group/index");
         User user = SessionUtil.getSessionUser(request);
         if (user == null) {
             mv = new ModelAndView("redirect:/user/login");
             return mv;
         }
-        try {
             List<Group> lst = groupService.listGroups();
             user = this.userService.getUserById(user.getId());
             model.addAttribute(new Group());
             mv.addObject("groups", lst);
             mv.addObject("user", user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         return mv;
     }
 
+    /**
+     *
+     * @param model
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/group/create", method = RequestMethod.GET)
     public ModelAndView getCreate(Model model, HttpServletRequest request) {
         User user = SessionUtil.getSessionUser(request);
@@ -70,6 +79,13 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param group
+     * @param result
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/group/create", method = RequestMethod.POST)
     public ModelAndView postCreate(@Valid @ModelAttribute("group") Group group, BindingResult result, HttpServletRequest request) {
         ModelAndView mv;
@@ -94,6 +110,14 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param group
+     * @param result
+     * @param request
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/group/join", method = RequestMethod.POST)
     public ModelAndView postJoin(@Valid @ModelAttribute("group") Group group, BindingResult result, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         ModelAndView mv = new ModelAndView("redirect:/group/index");
@@ -108,6 +132,14 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param id
+     * @param model
+     * @param request
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/group/edit/{id}", method = RequestMethod.GET)
     public ModelAndView getEdit(@PathVariable Integer id, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         ModelAndView mv = new ModelAndView("/group/edit");
@@ -130,6 +162,15 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param group
+     * @param result
+     * @param request
+     * @param redirectAttributes
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/group/edit/{id}", method = RequestMethod.POST)
     public ModelAndView postEdit(@Valid @ModelAttribute("group") Group group, BindingResult result, HttpServletRequest request,RedirectAttributes redirectAttributes, @PathVariable Integer id) {
         ModelAndView mv;
@@ -152,6 +193,12 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/group/show/{id}", method = RequestMethod.GET)
     public ModelAndView getShow(@PathVariable Integer id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("/group/show");
@@ -168,6 +215,14 @@ public class GroupController {
         return mv;
     }
 
+    /**
+     *
+     * @param allRequestParams
+     * @param group_id
+     * @param redirectAttributes
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/group/invite", method = RequestMethod.POST)
     public ModelAndView postInvite(@RequestParam(value = "users", required = false) List<Integer> allRequestParams,@RequestParam("group_id") Integer group_id, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("redirect:/group/show/"+group_id);

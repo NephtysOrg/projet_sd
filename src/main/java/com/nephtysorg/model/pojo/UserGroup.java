@@ -18,9 +18,20 @@ public class UserGroup  implements java.io.Serializable, java.lang.Comparable {
      private byte subscribed;
      private Date member_since;
 
+    /**
+     *
+     */
     public UserGroup() {
     }
 
+    /**
+     *
+     * @param id
+     * @param group
+     * @param user
+     * @param invited
+     * @param subscribed
+     */
     public UserGroup(UserGroupId id, Group group, User user, byte invited, byte subscribed) {
        this.id = id;
        this.group = group;
@@ -29,50 +40,107 @@ public class UserGroup  implements java.io.Serializable, java.lang.Comparable {
        this.subscribed = subscribed;
     }
    
+    /**
+     *
+     * @return
+     */
     public UserGroupId getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(UserGroupId id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public Group getGroup() {
         return this.group;
     }
     
+    /**
+     *
+     * @param group
+     */
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return this.user;
     }
     
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
+
+    /**
+     *
+     * @return
+     */
     public byte getInvited() {
         return this.invited;
     }
     
+    /**
+     *
+     * @param invited
+     */
     public void setInvited(byte invited) {
         this.invited = invited;
     }
+
+    /**
+     *
+     * @return
+     */
     public byte getSubscribed() {
         return this.subscribed;
     }
     
+    /**
+     *
+     * @param subscribed
+     */
     public void setSubscribed(byte subscribed) {
         this.subscribed = subscribed;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getMember_since() {
         return member_since;
     }
 
+    /**
+     *
+     * @param member_since
+     */
     public void setMember_since(Date member_since) {
         this.member_since = member_since;
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     */
     @Override
     public int compareTo(Object t) {
         return getMember_since().compareTo(((UserGroup)t).getMember_since());

@@ -19,10 +19,18 @@ import org.hibernate.SessionFactory;
 public class LocationDAOImpl implements LocationDAO {
     private SessionFactory sessionFactory;
     
-        public LocationDAOImpl(SessionFactory sessionFactory) {
+    /**
+     *
+     * @param sessionFactory
+     */
+    public LocationDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
     
+    /**
+     *
+     * @param location
+     */
     @Transactional    
     @Override
     public void addLocation(Location location) {
@@ -30,6 +38,10 @@ public class LocationDAOImpl implements LocationDAO {
             session.persist(location);
     }
 
+    /**
+     *
+     * @param location
+     */
     @Transactional
     @Override
     public void updateLocation(Location location) {
@@ -38,6 +50,10 @@ public class LocationDAOImpl implements LocationDAO {
             session.update(location);
     }
 
+    /**
+     *
+     * @return
+     */
     @Transactional
     @Override
     public List<Location> listLocations() {
@@ -47,6 +63,11 @@ public class LocationDAOImpl implements LocationDAO {
         return locationList;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Transactional
     @Override
     public Location getLocationById(int id) {
@@ -55,6 +76,11 @@ public class LocationDAOImpl implements LocationDAO {
         return location;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Transactional
     @Override
     public Location getLocationByName(String name) {
@@ -64,6 +90,10 @@ public class LocationDAOImpl implements LocationDAO {
         return (Location) query.uniqueResult();
     }
 
+    /**
+     *
+     * @param id
+     */
     @Transactional
     @Override
     public void removeLocation(int id) {
@@ -74,6 +104,11 @@ public class LocationDAOImpl implements LocationDAO {
         }
     }
 
+    /**
+     *
+     * @param location
+     * @return
+     */
     @Transactional
     @Override
     public boolean exist(Location location) {

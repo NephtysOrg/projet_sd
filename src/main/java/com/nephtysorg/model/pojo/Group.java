@@ -25,14 +25,29 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
      private String description;
      private Set userGroups = new HashSet(0);
 
+    /**
+     *
+     */
     public Group() {
     }
 
-	
+    /**
+     *
+     * @param user
+     * @param name
+     */
     public Group(User user, String name) {
         this.user = user;
         this.name = name;
     }
+
+    /**
+     *
+     * @param user
+     * @param name
+     * @param description
+     * @param userGroups
+     */
     public Group(User user, String name, String description, Set userGroups) {
        this.user = user;
        this.name = name;
@@ -40,39 +55,82 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
        this.userGroups = userGroups;
     }
    
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return this.id;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return this.user;
     }
     
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return this.name;
     }
     
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return this.description;
     }
     
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
     
+    /**
+     *
+     * @return
+     */
     public Set<UserGroup> getUserGroups() {
         return this.userGroups;
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public List getUserGroupsList() {
         List<UserGroup> tmp = new ArrayList<>(this.userGroups);
@@ -80,28 +138,47 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return tmp;
     }
     
+    /**
+     *
+     * @param userGroups
+     */
     public void setUserGroups(Set userGroups) {
         this.userGroups = userGroups;
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public int getSubscriptionNumber() {
         
         return this.getSubscribers().size();
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public int getMembersNumber() {
         
         return this.getMembers().size();
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public int getInvitedNumber() {
         return this.getInvited().size();
     }
 
-        
+    /**
+     *
+     * @return
+     */
     @Transient
     public List<User> getMembers() {
         Set<UserGroup> temp;
@@ -116,6 +193,10 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return result;
     }
     
+    /**
+     *
+     * @return
+     */
     @Transient
     public List<User> getInvited() {
         Set<UserGroup> temp;
@@ -130,7 +211,11 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return result;
     }
     
-        @Transient
+    /**
+     *
+     * @return
+     */
+    @Transient
     public List<User> getSubscribers() {
         Set<UserGroup> temp;
         List<User> result = new ArrayList<>();
@@ -145,12 +230,21 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return result;
     }
     
+    /**
+     *
+     * @param t
+     * @return
+     */
     @Override
     public int compareTo(Object t) {
         Group g = (Group) t;
         return this.getName().compareTo((g.getName()));         
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -158,13 +252,22 @@ public class Group  implements java.io.Serializable, java.lang.Comparable {
         return hash;
     }
     
-     @Override
+    /**
+     *
+     * @param t
+     * @return
+     */
+    @Override
     public boolean equals(Object t) {
         Group g = (Group) t;
         return this.getName().equals(g.getName());
     }
 
-     @Override
+    /**
+     *
+     * @return
+     */
+    @Override
     public String toString (){
         String result = "";
         result+= "Id:"+this.getId()+", Name:"+this.getName()+", Description:"+this.getDescription();

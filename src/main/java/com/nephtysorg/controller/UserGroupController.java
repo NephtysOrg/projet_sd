@@ -33,7 +33,16 @@ public class UserGroupController {
     private UserService userService;
 
     // @TODO  Sécurité
-    @RequestMapping(value = "/user_group/discard/{id_group}/{id_user}", method = RequestMethod.GET)
+
+    /**
+     *
+     * @param id_group
+     * @param id_user
+     * @param request
+     * @param redirectAttributes
+     * @return
+     */
+        @RequestMapping(value = "/user_group/discard/{id_group}/{id_user}", method = RequestMethod.GET)
     public ModelAndView getDiscard(@PathVariable("id_group") Integer id_group, @PathVariable("id_user") Integer id_user, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         ModelAndView mv;
 
@@ -74,6 +83,14 @@ public class UserGroupController {
         }
     }
 
+    /**
+     *
+     * @param id_group
+     * @param id_user
+     * @param request
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/user_group/accept/{id_group}/{id_user}", method = RequestMethod.GET)
     public ModelAndView getAccept(@PathVariable("id_group") Integer id_group, @PathVariable("id_user") Integer id_user, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         ModelAndView mv;

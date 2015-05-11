@@ -12,31 +12,60 @@ public class UserGroupId  implements java.io.Serializable {
      private int userId;
      private int groupId;
 
+    /**
+     *
+     */
     public UserGroupId() {
     }
 
+    /**
+     *
+     * @param userId
+     * @param groupId
+     */
     public UserGroupId(int userId, int groupId) {
        this.userId = userId;
        this.groupId = groupId;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getUserId() {
         return this.userId;
     }
     
+    /**
+     *
+     * @param userId
+     */
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getGroupId() {
         return this.groupId;
     }
     
+    /**
+     *
+     * @param groupId
+     */
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
 
-
-   public boolean equals(Object other) {
+    /**
+     *
+     * @param other
+     * @return
+     */
+    public boolean equals(Object other) {
          if ( (this == other ) ) return true;
 		 if ( (other == null ) ) return false;
 		 if ( !(other instanceof UserGroupId) ) return false;
@@ -46,7 +75,11 @@ public class UserGroupId  implements java.io.Serializable {
  && (this.getGroupId()==castOther.getGroupId());
    }
    
-   public int hashCode() {
+    /**
+     *
+     * @return
+     */
+    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getUserId();

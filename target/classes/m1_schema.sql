@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 27 Avril 2015 à 15:39
+-- Généré le: Dim 10 Mai 2015 à 22:29
 -- Version du serveur: 5.5.43-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.9
 
@@ -34,17 +34,16 @@ CREATE TABLE IF NOT EXISTS `group` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `group`
 --
 
 INSERT INTO `group` (`id`, `name`, `description`, `user_id`) VALUES
-(12, 'Groupe de CFOLLET', '', 10),
-(13, 'azeaze', '\r\n', 10),
-(14, 'Rbary group', 'zaz a mort\r\n\r\n', 11),
-(15, 'C''est cool ta vieÃ©', '', 17);
+(1, 'M1 TI (UPPA)', 'Groupe des Mater Technologies de l''Iternet de la faculté de Pau', 25),
+(2, 'Groupe Basket UPPA', '', 26),
+(3, 'Nos amis les betes', '', 29);
 
 -- --------------------------------------------------------
 
@@ -57,18 +56,15 @@ CREATE TABLE IF NOT EXISTS `location` (
   `label` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `label` (`label`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Contenu de la table `location`
 --
 
 INSERT INTO `location` (`id`, `label`) VALUES
-(11, ''),
-(14, 'aze'),
-(12, 'azeaze'),
-(10, 'Pau'),
-(13, 'Toto');
+(21, ''),
+(20, 'Pau');
 
 -- --------------------------------------------------------
 
@@ -80,24 +76,23 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `location` int(10) unsigned NOT NULL,
+  `location` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `user_id_2` (`id`),
   KEY `user_id` (`id`),
   KEY `user_id_3` (`id`),
   KEY `localisation` (`location`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `login`, `password`, `location`) VALUES
-(10, 'cfollet', 'cfollet', 10),
-(11, 'rbary', 'rbary', 10),
-(12, 'ftoulouze', 'ftoulouze', 10),
-(17, 'brigitte', 'kinder', 10);
+(25, 'cfollet', 'cfollet', 20),
+(26, 'rbary', 'rbary', 20),
+(29, 'Brigitte', 'solution', 21);
 
 -- --------------------------------------------------------
 
@@ -110,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
   `group_id` int(10) unsigned NOT NULL,
   `invited` tinyint(4) NOT NULL COMMENT '0 or 1 to indicate true or false',
   `subscribed` tinyint(4) NOT NULL COMMENT '0 or 1 to indicate true or false',
+  `member_since` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`,`group_id`),
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -118,11 +114,12 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 -- Contenu de la table `user_group`
 --
 
-INSERT INTO `user_group` (`user_id`, `group_id`, `invited`, `subscribed`) VALUES
-(10, 12, 0, 0),
-(10, 13, 0, 0),
-(11, 14, 0, 0),
-(17, 15, 0, 0);
+INSERT INTO `user_group` (`user_id`, `group_id`, `invited`, `subscribed`, `member_since`) VALUES
+(25, 1, 0, 0, '2015-05-09 09:04:02'),
+(25, 3, 0, 0, '2015-05-09 13:18:40'),
+(26, 2, 0, 0, '2015-05-09 09:06:32'),
+(26, 3, 1, 0, '2015-05-09 13:18:16'),
+(29, 3, 0, 0, '2015-05-09 12:50:11');
 
 --
 -- Contraintes pour les tables exportées

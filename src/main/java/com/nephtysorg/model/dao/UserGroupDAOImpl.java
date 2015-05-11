@@ -21,10 +21,18 @@ import org.hibernate.annotations.NotFoundAction;
 public class UserGroupDAOImpl implements UserGroupDAO {
     private SessionFactory sessionFactory;
     
-        public UserGroupDAOImpl(SessionFactory sessionFactory) {
+    /**
+     *
+     * @param sessionFactory
+     */
+    public UserGroupDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
         
+    /**
+     *
+     * @param userGroup
+     */
     @Transactional
     @Override
     public void addUserGroup(UserGroup userGroup) {
@@ -32,6 +40,10 @@ public class UserGroupDAOImpl implements UserGroupDAO {
             session.saveOrUpdate(userGroup);
     }
 
+    /**
+     *
+     * @param userGroup
+     */
     @Transactional
     @Override
     public void updateUserGroup(UserGroup userGroup) {
@@ -39,6 +51,10 @@ public class UserGroupDAOImpl implements UserGroupDAO {
             session.update(userGroup);
     }
 
+    /**
+     *
+     * @return
+     */
     @Transactional
     @Override
     public List<UserGroup> listUserGroups() {
@@ -47,6 +63,11 @@ public class UserGroupDAOImpl implements UserGroupDAO {
         return userGroupList;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Transactional
     @Override
     public UserGroup getUserGroupById(UserGroupId id) {
@@ -56,6 +77,10 @@ public class UserGroupDAOImpl implements UserGroupDAO {
         return user;
     }
 
+    /**
+     *
+     * @param id
+     */
     @Transactional
     @Override
     public void removeUserGroup(UserGroupId id) {

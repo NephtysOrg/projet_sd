@@ -20,10 +20,18 @@ public class GroupDAOImpl implements GroupDAO {
     
    private SessionFactory sessionFactory;
  
+    /**
+     *
+     * @param sessionFactory
+     */
     public GroupDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     *
+     * @param group
+     */
     @Transactional
     @Override
     public void addGroup(Group group) {
@@ -31,6 +39,10 @@ public class GroupDAOImpl implements GroupDAO {
         session.persist(group);
     }
 
+    /**
+     *
+     * @param group
+     */
     @Transactional
     @Override
     public void updateGroup(Group group) {
@@ -39,6 +51,10 @@ public class GroupDAOImpl implements GroupDAO {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Transactional
     @Override
     public List<Group> listGroups() {
@@ -47,6 +63,11 @@ public class GroupDAOImpl implements GroupDAO {
         return groupList;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Transactional
     @Override
     public Group getGroupById(int id) {
@@ -56,6 +77,11 @@ public class GroupDAOImpl implements GroupDAO {
         return (Group) group;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Transactional
     @Override
     public Group getGroupByName(String name) {
@@ -65,6 +91,10 @@ public class GroupDAOImpl implements GroupDAO {
         return (Group) query.uniqueResult();
     }
 
+    /**
+     *
+     * @param id
+     */
     @Transactional
     @Override
     public void removeGroup(int id) {
@@ -73,6 +103,11 @@ public class GroupDAOImpl implements GroupDAO {
         session.delete(group);
     }
 
+    /**
+     *
+     * @param group
+     * @return
+     */
     @Transactional
     @Override
     public boolean exist(Group group) {
