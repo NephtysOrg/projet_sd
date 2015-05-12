@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 20 avr. 2015 10:17:31 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.nephtysorg.model.pojo.User" table="user" catalog="m1" optimistic-lock="version">
+    <class name="com.nephtysorg.model.pojo.User" table="user" catalog="cfollet" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
